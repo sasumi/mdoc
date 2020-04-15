@@ -16,6 +16,7 @@ define('SORT_NAME_DESC', 8);
 if(version_compare(PHP_VERSION, MDOC_VERSION_REQUIRED) <= 0){
 	throw new \Exception("Required PHP ".MDOC_VERSION_REQUIRED." or above", 1);
 }
+$project_last_update = time();
 $project = parse_ini_file(MDOC_DOCUMENT_CONFIG);
 
 $files = glob_recursive(MDOC_DOCUMENT_ROOT, SORT_DIR_FIRST|SORT_NAME_ASC);
@@ -69,8 +70,14 @@ $article = read_article($current_file['path']);
 				</div>
 			</article>
 			<footer>
-
+				<?php if($project['copyrights']):?>
+                <div class="copyrights"><?=$project['copyrights'];?></div>
+				<?php endif;?>
+				<?php if($project_last_update):?>
+				<div class="project-last-update">Last Update: <?=date('Y-m-d H:i:s', $project_last_update);?></div>
+				<?php endif;?>
 			</footer>
+
 		</section>
 	</section>
 	<script>
