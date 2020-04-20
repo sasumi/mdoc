@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<style>@import "//at.alicdn.com/t/font_1744451_k0fvlq3eev.css";
+:root {
+	--color-rgb: 68, 68, 6;
+	--background-color-rgb:238, 238, 238;
+	--link-color-rgb:2, 125, 183;
+	--font-size:14px;
+	--line-height:1.6;
+	--font-family:Microsoft Yahei, SimSun, Courier new, Tahoma, Lucida Grande, serif;
+	--font:var(--font-size)/var(--line-height) var(--font-family);
+	--iconfont:iconfont, var(--font-family);
+}
+html {height:100%;}
+body {height:100%; overflow:hidden; box-sizing:border-box; background-color:rgb(var(--background-color-rgb)); color:rgb(var(--color-rgb)); font:var(--font);}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {margin:0;padding:0}
+label, input, select {vertical-align:middle}
+q:before, q:after {content:''}
+p {margin:0.5em 0;}
+a {color:rgb(var(--link-color-rgb)); text-decoration:none;}
+a:hover {color:#00aeff}
+a[target=_blank]:after {content:"◥"; color:gray;}
+a:hover img { outline:1px solid rgb(var(--link-color-rgb));}
+ul {list-style-position:inside; padding:0 0.5em}
+ol {list-style-position:outside; margin-left:1em;}
+ol li {margin:0.5em 0;}
+
+.page {display:flex; height:100%; box-sizing:border-box;}
+aside {flex:1; max-width:250px; margin:1em 0; border-right:1px solid #fff; position:relative; padding:14px 1em;overflow-y:auto; overflow-x:hidden; text-shadow:1px 1px 1px #fff;}
+aside:after {content:""; display:block; height:100%; border-right:1px solid #ccc; position:absolute; right:0; top:0;}
+.container {flex:4; overflow-y:auto; padding:2em 3em;}
+footer:before {border-top:1px solid #ccc; border-bottom:1px solid #eee; display:block; width:100%; content:""; margin:1em 0;}
+footer .copyrights {color:gray;}
+footer .project-last-update {color:gray}
+
+.project-title {font-size:1.2rem; text-align:center; margin-bottom:1em;}
+.project-title a:before {content:"\e616"; font-family:var(--iconfont); margin-right:0.1em;}
+
+.project-search {position:relative;}
+.project-search input[type=search]{background:white; border:none; box-shadow:inset 1px 1px 1px 1px #cccccc8c; padding:0.5em 24px 0.5em 1em; box-sizing:border-box; border-radius:30px; width:100%; outline:none;}
+.project-search .search-btn {position:absolute; right:5px; top:8px; width:24px; overflow:hidden; background:transparent; border:none; cursor:pointer; outline:none;}
+.project-search .search-btn:hover {color:rgb(var(--link-color-rgb))}
+.project-search .search-btn:before {font-family:var(--iconfont); content:"\e621"; padding-right:10px;}
+
+.aside-mod {margin-top:2em;}
+.aside-mod dt {margin-bottom:0.5em; color:#aaa;}
+
+.breadcrumbs {list-style:none; overflow:hidden; padding:0; margin:0}
+.breadcrumbs li {float:left;}
+.breadcrumbs li:after {content:">"; color:gray; padding:0 0.5em;}
+.breadcrumbs li:last-child:after {display:none;}
+
+.file-list {padding-left:20px;}
+.file-list ul {list-style:none; margin:0; padding:0}
+.file-list>ul ul {margin-left:1em;}
+.file-list .title {padding:0.2em 0; display:inline-block; cursor:pointer;}
+.file-list .title:before {content:"\e73c"; font-family:var(--iconfont); margin-right:0.2em;}
+.file-list .active>.title {font-weight:bold;}
+.file-list [data-type="dir"]>.title {color:#cd8200;}
+.file-list [data-type="dir"]>.title:before {content:"\e600"}
+.file-list .toggle {position:absolute; margin:6px 0 0 -16px; cursor:pointer; font-family:var(--iconfont); font-size:11px; color:gray;}
+.file-list .toggle:hover {color:rgb(var(--color-rgb))}
+.file-list .toggle:before {content:"\e65e"; }
+
+.meta {margin:0 0 1em 0; padding:0; overflow:hidden; list-style:none; color:rgba(var(--color-rgb), 0.9)}
+.meta li {float:left; margin-right:2em}
+.meta li:last-child {margin-right:0;}
+.meta li>label {color:rgba(var(--color-rgb), 0.7)}
+.meta li>label:after {content:"："}
+.meta li>label, .meta li>span {display:inline-block; vertical-align:top}
+
+article {max-width:70%; min-width:960px; margin:2em 0; padding:1em 0; box-sizing:border-box; counter-reset:h2; border-top:1px solid #ddd;}
+article h1, article h2, article h3, article h4, article h5, article h6 {font-weight:normal; margin:1em 0 0.5em;}
+article h1 {font-size:30px; margin-top:0;}
+article h2 {font-size:26px; counter-reset:h3}
+article h3 {font-size:20px; counter-reset:h4}
+article h4 {font-size:14px; color:#333;}
+article h2:before, article h3:before, article h4:before {display:inline-block; margin-right:0.5em}
+article h2:before {counter-increment:h2; content:counter(h2) ". "}
+article h3:before {counter-increment:h3; content:counter(h2) "." counter(h3) " "}
+article h4:before {counter-increment:h4; content:counter(h2) "." counter(h3) "." counter(h4) " "}
+article table {border-collapse:collapse; border-spacing:0; box-shadow:0 0 0 5px #e4e4e4; background-color:#fff;}
+article th, article td {border:1px solid #ccc; padding:0.25em 0.5em; text-align:left;}
+article thead tr {background-color:#ddd; text-shadow:1px 1px 1px white;}
+article tbody tr:nth-child(even) {background-color:#eeeeee59;}
+article th {white-space:nowrap;}
+article blockquote {padding:3px 10px; margin:1em 0; border-left:3px solid gray; background-color:#00000014}
+article img {max-width:90%; margin:1em 0; }
+article var {background-color:#a4e6ff; display:inline-block; padding:1px 5px; border-radius:3px; font-size:14px; font-style:normal}
+article sub {display:block; font-size:14px; color:gray;}
+article hr {display:block; height:0; border:none; border-top:1px solid #ccc; border-bottom:1px solid #eee; margin:10px 0;}
+article li ul,
+article li ol {margin-left:1em;}
+article strong {color:black; font-weight:bold}
+article code {color:green; transition:all 0.2s linear; background-color:#ffffff70 !important; max-height:500px; overflow-y:hidden; box-shadow:inset 1px 1px 1px #d2d2d2; display:block; padding:5px 10px; font-size:13px; font-family:Inconsolata, "Source Code Pro", serif;}
+article code:hover {overflow-y:auto; background-color:#fff !important;}
+article q {font-style:italic; color:gray; background-color:#fff;}
+article sup {font-size:8px}
+
+@media print {
+	body { background:none; }
+	aside { display:none; }
+	.article-wrap { height:auto; overflow:visible }
+	article { margin:0 auto; padding:0; box-shadow:none; }
+}</style>
+	<title>MySQL数据 333 模型</title>
+</head>
+<body>
+	<section class="page">
+		<aside>
+			<div class="project-title"><a href="">LitePHP开发者手册</a></div>
+			<form action="" class="project-search">
+				<input type="search" name="keyword" id="" placeholder="Search Docs" value="">
+				<button class="search-btn">Search</button>
+			</form>
+			<dl class="aside-mod">
+				<dt>DOCUMENTS</dt>
+				<dd class="file-list">
+					<ul><li data-type="file" class="active"><a href="?f=" class="title">MySQL数据 333 模型</a></li><li data-type="file" class="active"><a href="?f=" class="title">常规项目文件说明</a></li><li data-type="file" class="active"><a href="?f=" class="title">RFC2119中文释义</a></li><li data-type="file" class="active"><a href="?f=" class="title">API 接口模式</a></li><li data-type="file" class="active"><a href="?f=" class="title">配置说明</a></li><li data-type="file" class="active"><a href="?f=" class="title">MySQL数据库设计规范与原则</a></li><li data-type="file" class="active"><a href="?f=" class="title">PHP 编码检查</a></li><li data-type="file" class="active"><a href="?f=" class="title">安装使用</a></li></ul>				</dd>
+			</dl>
+		</aside>
+
+		<section class="container">
+			<ul class="breadcrumbs">
+				<li><a href="/">Home</a></li>
+				<li>MySQL数据 333 模型</li>
+			</ul>
+			<article>
+				<h1>MySQL数据 333 模型</h1>
+				<ul class="meta">
+					<li><label>创建</label><span>2020年04月15日 09:20</span></li>
+					<li>
+						<label>最后修改</label>
+						<span>
+							2020年04月20日 12:06						</span>
+					</li>
+				</ul>
+				<div class="content">
+					<h1>MySQL数据 <code>333</code> 模型</h1>
+<p>[TOC]</p>
+<h2>数据库模型</h2>
+<p>LitePHP DB Model类包含两块定义：数据表定义类(Table)、业务模型类(Model)，其中数据库表定义类不推荐通过人工方式维护，尽量保证与
+实际数据库表一致，方便监控数据表版本流程。</p>
+<p>一个简单的Table定义如下：</p>
+<pre><code class="language-php">&lt;?php
+namespace HelloWorld\table;
+use Lite\DB\Model as Model;
+
+/**
+ * Class TableUser
+ * @property-read int $id 
+ * @property string $user_name 用户名
+ * @property string $password 密码
+ * @property mixed $status 状态(正常,禁用)
+ */
+abstract class TableUser extends Model {
+    const STATUS_NORMAL = 'NORMAL';
+    const STATUS_DISABLED = 'DISABLED';
+
+    public static $status_map = array(
+        self::STATUS_NORMAL =&gt; '正常',
+        self::STATUS_DISABLED =&gt; '禁用',
+    );
+
+    public function __construct($data=array()){
+        $this-&gt;setPropertiesDefine(array(
+            'id' =&gt; array(
+                'alias' =&gt; 'id',
+                'type' =&gt; 'int',
+                'length' =&gt; 5,
+                'primary' =&gt; true,
+                'required' =&gt; true,
+                'readonly' =&gt; true,
+                'min' =&gt; 0,
+                'entity' =&gt; true
+            ),
+            'user_name' =&gt; array(
+                'alias' =&gt; '用户名',
+                'type' =&gt; 'string',
+                'length' =&gt; 20,
+                'required' =&gt; true,
+                'unique' =&gt; true,
+                'entity' =&gt; true
+            ),
+            'password' =&gt; array(
+                'alias' =&gt; '密码',
+                'type' =&gt; 'string',
+                'length' =&gt; 32,
+                'required' =&gt; true,
+                'entity' =&gt; true
+            ),
+            'status' =&gt; array(
+                'alias' =&gt; '状态',
+                'type' =&gt; 'enum',
+                'default' =&gt; 'NORMAL',
+                'options' =&gt; array('NORMAL'=&gt;'正常', 'DISABLED'=&gt;'禁用'),
+                'entity' =&gt; true
+            ),
+        ));
+        parent::__construct($data);
+    }
+
+    /**
+     * current model table name
+     * @return string
+     */
+    public function getTableName() {
+        return 'user';
+    }
+
+    /**
+    * get database config
+    * @return array
+    */
+    protected function getDbConfig(){
+        return include dirname(__DIR__).'/db.inc.php';
+    }
+
+    /**
+    * 获取模块名称
+    * @return string
+    */
+    public function getModelDesc(){
+        return '用户';
+    }
+}</code></pre>
+<p>简单的Model定义如下：</p>
+<pre><code class="language-php">&lt;?php
+namespace HelloWorld\model;
+use HelloWorld\table\TableUser;
+
+/**
+ * User: Lite Scaffold
+ * @property \HelloWorld\model\Role $role
+ */
+class User extends TableUser {
+    /**
+     * 是否为正常用户
+     * @param $clear_key
+     * @return bool
+     */
+    public function isNormal(){
+        return $this-&gt;status == self::STATUS_NORMAL;
+    }
+}</code></pre>
+<p>一般项目中，PHP项目应对的数据模型为数据表模型时，数据表模型将进行以下规则转换，以及其他的一些处理。</p>
+<h2>数据模型操作</h2>
+<pre><code class="language-php">&lt;?php
+//查找单个用户
+$user = User::find('id=?',1)-&gt;one();
+
+//调用User方法
+var_dump($user-&gt;isNormal());
+
+//查找单个客户（检测异常）
+$user = User::find('id=?', 1)-&gt;oneOrFail();
+
+//批量查找用户 - 全量
+$user_list = User::find('status="Normal"')-&gt;all();
+
+//批量查找用户 - 指定页码
+$user_list = User::find('status="Normal"')-&gt;paginate(1);
+
+//批量查找用户 - 分页器
+$paginate = Paginate::instance();
+$user_list = User::find('status="Normal"')-&gt;paginage($paginate);</code></pre>
+<h2>字段类型转换规则</h2>
+<p>框架针对数据表模型制定以下类型转换规则。</p>
+<p>MySQL字段类型转换规则：</p>
+<table class="rule">
+    <thead>
+        <tr><th width="10%">类别</th><th>字段类型</th><th>目标类型（Selector）</th><th width="40%">补充</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th rowspan="2">数字</th>
+            <td>tinyint，smallint，mediumint，int，bigint</td>
+            <td>input:number</td>
+            <td>
+                1. 如果define里面没有额外声明options才会被转换成input:number，否则将以Set类型进行转换。<br/>
+                2. 如果定义UNSIGNED,会产生 min=0
+            </td>
+        </tr>
+        <tr>
+            <td>decimal，float，double</td>
+            <td>input:number</td>
+            <td>
+                1. 根据小数点精度产生相应的 step精度控制,如step=0.01<br/>
+                2. 如果定义UNSIGNED,会产生 min=0
+            </td>
+        </tr>
+        <tr>
+            <th rowspan="4">日期</th>
+            <td>year</td>
+            <td>input:year</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>datetime，timestamp</td>
+            <td>input:local-datetime</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>date</td>
+            <td>input:local-date</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>time</td>
+            <td>input:text</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th rowspan="5">字符</th>
+            <td>char，varchar</td>
+            <td>input:text</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>tinytext</td>
+            <td>textarea</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>text</td>
+            <td>产生简单富文本编辑器<sup>1</sup></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>mediumtext</td>
+            <td>产生复杂富文本编辑器<sup>1</sup></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>longtext</td>
+            <td>产生复杂富文本编辑器<sup>1</sup></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>枚举</th>
+            <td>enum</td>
+            <td>产生 `select` 或 `input:radio`</td>
+            <td>备注内包含格式(a,b,c) 被作为对应的(按照下标排序)选项名称</td>
+        </tr>
+        <tr>
+            <th>集合</th>
+            <td>set</td>
+            <td>input:checkbox</td>
+            <td>
+                1. 产生 `input:checkbox` <br/>
+                2. 备注内包含格式(a,b,c) 被作为对应的(按照下标排序)选项名称
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>注[1]：富文本编辑器需在自定义View视图处理器中接入自定义富文本Javascript组件。</p>
+<h2>数据表其他处理方法</h2>
+<ul>
+<li>数据表comment缺省被解析为模型(model)名称</li>
+<li>字段comment缺省被解析为alias(字段名称)</li>
+<li>未设置default=NULL的字段将被定义为required，表单元素追加required="required"属性</li>
+<li>备注内包含括号部分,如:(note)，将被解析为字段补充描述(description),追加在输入表单后面,enum,set除外</li>
+<li>default在不为null情况下,值将被填入默认表单值(新建页面)</li>
+<li>primary key缺省为readonly，不产生表单元素</li>
+</ul>
+<h2>不推荐类型规则</h2>
+<pre><code>1. 声明timestamp类型，实际存储却为int类型</code></pre>
+<p><a href="docs/DBDesign.md">MySQL数据库规范</a></p>				</div>
+			</article>
+			<footer>
+				                <div class="copyrights">© Copyright 2020, All Rights Reserved by PHP Coder.</div>
+												<div class="project-last-update">Last Update: 2020-04-20 13:55:42</div>
+							</footer>
+
+		</section>
+	</section>
+	<script>
+		// setTimeout("location.reload()", 5000);
+	</script>
+</body>
+</html>

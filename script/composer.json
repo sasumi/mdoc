@@ -1,0 +1,5 @@
+{
+    "require": {
+        "lfphp/logger": "^1.0"
+    }
+}

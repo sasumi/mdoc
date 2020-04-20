@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<style>@import "//at.alicdn.com/t/font_1744451_k0fvlq3eev.css";
+:root {
+	--color-rgb: 68, 68, 6;
+	--background-color-rgb:238, 238, 238;
+	--link-color-rgb:2, 125, 183;
+	--font-size:14px;
+	--line-height:1.6;
+	--font-family:Microsoft Yahei, SimSun, Courier new, Tahoma, Lucida Grande, serif;
+	--font:var(--font-size)/var(--line-height) var(--font-family);
+	--iconfont:iconfont, var(--font-family);
+}
+html {height:100%;}
+body {height:100%; overflow:hidden; box-sizing:border-box; background-color:rgb(var(--background-color-rgb)); color:rgb(var(--color-rgb)); font:var(--font);}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {margin:0;padding:0}
+label, input, select {vertical-align:middle}
+q:before, q:after {content:''}
+p {margin:0.5em 0;}
+a {color:rgb(var(--link-color-rgb)); text-decoration:none;}
+a:hover {color:#00aeff}
+a[target=_blank]:after {content:"◥"; color:gray;}
+a:hover img { outline:1px solid rgb(var(--link-color-rgb));}
+ul {list-style-position:inside; padding:0 0.5em}
+ol {list-style-position:outside; margin-left:1em;}
+ol li {margin:0.5em 0;}
+
+.page {display:flex; height:100%; box-sizing:border-box;}
+aside {flex:1; max-width:250px; margin:1em 0; border-right:1px solid #fff; position:relative; padding:14px 1em;overflow-y:auto; overflow-x:hidden; text-shadow:1px 1px 1px #fff;}
+aside:after {content:""; display:block; height:100%; border-right:1px solid #ccc; position:absolute; right:0; top:0;}
+.container {flex:4; overflow-y:auto; padding:2em 3em;}
+footer:before {border-top:1px solid #ccc; border-bottom:1px solid #eee; display:block; width:100%; content:""; margin:1em 0;}
+footer .copyrights {color:gray;}
+footer .project-last-update {color:gray}
+
+.project-title {font-size:1.2rem; text-align:center; margin-bottom:1em;}
+.project-title a:before {content:"\e616"; font-family:var(--iconfont); margin-right:0.1em;}
+
+.project-search {position:relative;}
+.project-search input[type=search]{background:white; border:none; box-shadow:inset 1px 1px 1px 1px #cccccc8c; padding:0.5em 24px 0.5em 1em; box-sizing:border-box; border-radius:30px; width:100%; outline:none;}
+.project-search .search-btn {position:absolute; right:5px; top:8px; width:24px; overflow:hidden; background:transparent; border:none; cursor:pointer; outline:none;}
+.project-search .search-btn:hover {color:rgb(var(--link-color-rgb))}
+.project-search .search-btn:before {font-family:var(--iconfont); content:"\e621"; padding-right:10px;}
+
+.aside-mod {margin-top:2em;}
+.aside-mod dt {margin-bottom:0.5em; color:#aaa;}
+
+.breadcrumbs {list-style:none; overflow:hidden; padding:0; margin:0}
+.breadcrumbs li {float:left;}
+.breadcrumbs li:after {content:">"; color:gray; padding:0 0.5em;}
+.breadcrumbs li:last-child:after {display:none;}
+
+.file-list {padding-left:20px;}
+.file-list ul {list-style:none; margin:0; padding:0}
+.file-list>ul ul {margin-left:1em;}
+.file-list .title {padding:0.2em 0; display:inline-block; cursor:pointer;}
+.file-list .title:before {content:"\e73c"; font-family:var(--iconfont); margin-right:0.2em;}
+.file-list .active>.title {font-weight:bold;}
+.file-list [data-type="dir"]>.title {color:#cd8200;}
+.file-list [data-type="dir"]>.title:before {content:"\e600"}
+.file-list .toggle {position:absolute; margin:6px 0 0 -16px; cursor:pointer; font-family:var(--iconfont); font-size:11px; color:gray;}
+.file-list .toggle:hover {color:rgb(var(--color-rgb))}
+.file-list .toggle:before {content:"\e65e"; }
+
+.meta {margin:0 0 1em 0; padding:0; overflow:hidden; list-style:none; color:rgba(var(--color-rgb), 0.9)}
+.meta li {float:left; margin-right:2em}
+.meta li:last-child {margin-right:0;}
+.meta li>label {color:rgba(var(--color-rgb), 0.7)}
+.meta li>label:after {content:"："}
+.meta li>label, .meta li>span {display:inline-block; vertical-align:top}
+
+article {max-width:70%; min-width:960px; margin:2em 0; padding:1em 0; box-sizing:border-box; counter-reset:h2; border-top:1px solid #ddd;}
+article h1, article h2, article h3, article h4, article h5, article h6 {font-weight:normal; margin:1em 0 0.5em;}
+article h1 {font-size:30px; margin-top:0;}
+article h2 {font-size:26px; counter-reset:h3}
+article h3 {font-size:20px; counter-reset:h4}
+article h4 {font-size:14px; color:#333;}
+article h2:before, article h3:before, article h4:before {display:inline-block; margin-right:0.5em}
+article h2:before {counter-increment:h2; content:counter(h2) ". "}
+article h3:before {counter-increment:h3; content:counter(h2) "." counter(h3) " "}
+article h4:before {counter-increment:h4; content:counter(h2) "." counter(h3) "." counter(h4) " "}
+article table {border-collapse:collapse; border-spacing:0; box-shadow:0 0 0 5px #e4e4e4; background-color:#fff;}
+article th, article td {border:1px solid #ccc; padding:0.25em 0.5em; text-align:left;}
+article thead tr {background-color:#ddd; text-shadow:1px 1px 1px white;}
+article tbody tr:nth-child(even) {background-color:#eeeeee59;}
+article th {white-space:nowrap;}
+article blockquote {padding:3px 10px; margin:1em 0; border-left:3px solid gray; background-color:#00000014}
+article img {max-width:90%; margin:1em 0; }
+article var {background-color:#a4e6ff; display:inline-block; padding:1px 5px; border-radius:3px; font-size:14px; font-style:normal}
+article sub {display:block; font-size:14px; color:gray;}
+article hr {display:block; height:0; border:none; border-top:1px solid #ccc; border-bottom:1px solid #eee; margin:10px 0;}
+article li ul,
+article li ol {margin-left:1em;}
+article strong {color:black; font-weight:bold}
+article code {color:green; transition:all 0.2s linear; background-color:#ffffff70 !important; max-height:500px; overflow-y:hidden; box-shadow:inset 1px 1px 1px #d2d2d2; display:block; padding:5px 10px; font-size:13px; font-family:Inconsolata, "Source Code Pro", serif;}
+article code:hover {overflow-y:auto; background-color:#fff !important;}
+article q {font-style:italic; color:gray; background-color:#fff;}
+article sup {font-size:8px}
+
+@media print {
+	body { background:none; }
+	aside { display:none; }
+	.article-wrap { height:auto; overflow:visible }
+	article { margin:0 auto; padding:0; box-shadow:none; }
+}</style>
+	<title>配置说明</title>
+</head>
+<body>
+	<section class="page">
+		<aside>
+			<div class="project-title"><a href="">LitePHP开发者手册</a></div>
+			<form action="" class="project-search">
+				<input type="search" name="keyword" id="" placeholder="Search Docs" value="">
+				<button class="search-btn">Search</button>
+			</form>
+			<dl class="aside-mod">
+				<dt>DOCUMENTS</dt>
+				<dd class="file-list">
+					<ul><li data-type="file" class="active"><a href="?f=" class="title">MySQL数据 333 模型</a></li><li data-type="file" class="active"><a href="?f=" class="title">常规项目文件说明</a></li><li data-type="file" class="active"><a href="?f=" class="title">RFC2119中文释义</a></li><li data-type="file" class="active"><a href="?f=" class="title">API 接口模式</a></li><li data-type="file" class="active"><a href="?f=" class="title">配置说明</a></li><li data-type="file" class="active"><a href="?f=" class="title">MySQL数据库设计规范与原则</a></li><li data-type="file" class="active"><a href="?f=" class="title">PHP 编码检查</a></li><li data-type="file" class="active"><a href="?f=" class="title">安装使用</a></li></ul>				</dd>
+			</dl>
+		</aside>
+
+		<section class="container">
+			<ul class="breadcrumbs">
+				<li><a href="/">Home</a></li>
+				<li>配置说明</li>
+			</ul>
+			<article>
+				<h1>配置说明</h1>
+				<ul class="meta">
+					<li><label>创建</label><span>2020年04月15日 09:20</span></li>
+					<li>
+						<label>最后修改</label>
+						<span>
+							2020年01月14日 09:54						</span>
+					</li>
+				</ul>
+				<div class="content">
+					<h1>配置说明</h1>
+<p>[TOC]</p>
+<p>应用配置项一般存放于 /config/目录，文件命名采用 <code>$name.inc.php</code>（没有采用以上规则的文件将不会被Lite\Config::get方法获取到）。
+配置文件通过返回数组形式封装配置项，如： </p>
+<pre><code class="language-php"> &lt;?php return array('key'=&gt;'val'); </code></pre>
+<h2>app.inc.php（基础应用配置）</h2>
+<table>
+<thead>
+<tr>
+<th>配置项</th>
+<th>解释</th>
+<th>默认值</th>
+<th>是否必填</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>url</td>
+<td>应用访问URL路径，以斜杠结尾</td>
+<td>-</td>
+<td>必填</td>
+<td>"<a href="http://www.site.com/app/">http://www.site.com/app/</a>"</td>
+</tr>
+<tr>
+<td>static</td>
+<td>静态资源访问URL路径，以斜杠结尾</td>
+<td>-</td>
+<td>必填</td>
+<td>"/static/"</td>
+</tr>
+<tr>
+<td>debug</td>
+<td>是否开启debug调试</td>
+<td>false</td>
+<td>非必填</td>
+<td>true</td>
+</tr>
+<tr>
+<td>render</td>
+<td>应用访问URL路径，以斜杠结尾</td>
+<td>ViewBase::class</td>
+<td>非必填</td>
+<td>MyView::class</td>
+</tr>
+<tr>
+<td>page404</td>
+<td>404页面地址，或处理回调</td>
+<td>-</td>
+<td>非必填</td>
+<td>未配置该项值，项目404直接以message方式显示。如可配置为：<br /> function($err){ echo $err; }</td>
+</tr>
+<tr>
+<td>pageError</td>
+<td>程序错误统一地址（500），或处理回调</td>
+<td>-</td>
+<td>非必填</td>
+<td>同上</td>
+</tr>
+</tbody>
+</table>
+<p>示例代码：</p>
+<pre><code class="language-php">&lt;?php
+return [
+    'url' =&gt; 'http://www.site.com/app/',
+    'debug' =&gt; true
+];</code></pre>
+<h2>router.inc.php（路由配置，可选）</h2>
+<table>
+<thead>
+<tr>
+<th>配置项</th>
+<th>解释</th>
+<th>（默认值</th>
+<th>是否必填</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mode</td>
+<td>路由模式</td>
+<td>Router::MODE_NORMAL 普通路由模式（以?r=uri作为路由识别）</td>
+<td>非必填</td>
+<td>Router::MODE_REWRITE</td>
+</tr>
+<tr>
+<td>router_key</td>
+<td>路由索引键</td>
+<td>"r"</td>
+<td>非必填</td>
+<td>"rt"</td>
+</tr>
+<tr>
+<td>default_controller</td>
+<td>默认控制器</td>
+<td>"index"</td>
+<td>非必填</td>
+<td>"main"</td>
+</tr>
+<tr>
+<td>default_action</td>
+<td>默认方法</td>
+<td>"index"</td>
+<td>非必填</td>
+<td>"mainMethod"</td>
+</tr>
+</tbody>
+</table>
+<p>示例代码：</p>
+<pre><code class="language-php">&lt;?php
+return [
+    'mode' =&gt; Router::MODE_REWRITE
+];</code></pre>
+<h2>自定义配置项</h2>
+<p>用户可自行新增代码使用配置数据。使用 <code>Lite\Core\Config</code> 类可通过多层路径访问获取配置数值。例：</p>
+<p>access.inc.php</p>
+<pre><code class="language-php">&lt;?php
+return [
+    'MaxLoginCount' =&gt; 3，
+    'DefaultUser' =&gt; [
+        'name' =&gt; 'Jackson'
+    ]
+];</code></pre>
+<p>调用方式：</p>
+<pre><code class="language-php">&lt;?php
+    use \Lite\Core\Config;
+    $max_login_count = Config::get('access/MaxLoginCount');  //3
+    $def_user = Config::get('access/DefaultUser'); // ['name'=&gt;'Jackson']
+    $def_user_name = Config::get('access/DefaultUser/name'); // Jackson</code></pre>				</div>
+			</article>
+			<footer>
+				                <div class="copyrights">© Copyright 2020, All Rights Reserved by PHP Coder.</div>
+												<div class="project-last-update">Last Update: 2020-04-20 13:55:42</div>
+							</footer>
+
+		</section>
+	</section>
+	<script>
+		// setTimeout("location.reload()", 5000);
+	</script>
+</body>
+</html>

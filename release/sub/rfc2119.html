@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<style>@import "//at.alicdn.com/t/font_1744451_k0fvlq3eev.css";
+:root {
+	--color-rgb: 68, 68, 6;
+	--background-color-rgb:238, 238, 238;
+	--link-color-rgb:2, 125, 183;
+	--font-size:14px;
+	--line-height:1.6;
+	--font-family:Microsoft Yahei, SimSun, Courier new, Tahoma, Lucida Grande, serif;
+	--font:var(--font-size)/var(--line-height) var(--font-family);
+	--iconfont:iconfont, var(--font-family);
+}
+html {height:100%;}
+body {height:100%; overflow:hidden; box-sizing:border-box; background-color:rgb(var(--background-color-rgb)); color:rgb(var(--color-rgb)); font:var(--font);}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {margin:0;padding:0}
+label, input, select {vertical-align:middle}
+q:before, q:after {content:''}
+p {margin:0.5em 0;}
+a {color:rgb(var(--link-color-rgb)); text-decoration:none;}
+a:hover {color:#00aeff}
+a[target=_blank]:after {content:"◥"; color:gray;}
+a:hover img { outline:1px solid rgb(var(--link-color-rgb));}
+ul {list-style-position:inside; padding:0 0.5em}
+ol {list-style-position:outside; margin-left:1em;}
+ol li {margin:0.5em 0;}
+
+.page {display:flex; height:100%; box-sizing:border-box;}
+aside {flex:1; max-width:250px; margin:1em 0; border-right:1px solid #fff; position:relative; padding:14px 1em;overflow-y:auto; overflow-x:hidden; text-shadow:1px 1px 1px #fff;}
+aside:after {content:""; display:block; height:100%; border-right:1px solid #ccc; position:absolute; right:0; top:0;}
+.container {flex:4; overflow-y:auto; padding:2em 3em;}
+footer:before {border-top:1px solid #ccc; border-bottom:1px solid #eee; display:block; width:100%; content:""; margin:1em 0;}
+footer .copyrights {color:gray;}
+footer .project-last-update {color:gray}
+
+.project-title {font-size:1.2rem; text-align:center; margin-bottom:1em;}
+.project-title a:before {content:"\e616"; font-family:var(--iconfont); margin-right:0.1em;}
+
+.project-search {position:relative;}
+.project-search input[type=search]{background:white; border:none; box-shadow:inset 1px 1px 1px 1px #cccccc8c; padding:0.5em 24px 0.5em 1em; box-sizing:border-box; border-radius:30px; width:100%; outline:none;}
+.project-search .search-btn {position:absolute; right:5px; top:8px; width:24px; overflow:hidden; background:transparent; border:none; cursor:pointer; outline:none;}
+.project-search .search-btn:hover {color:rgb(var(--link-color-rgb))}
+.project-search .search-btn:before {font-family:var(--iconfont); content:"\e621"; padding-right:10px;}
+
+.aside-mod {margin-top:2em;}
+.aside-mod dt {margin-bottom:0.5em; color:#aaa;}
+
+.breadcrumbs {list-style:none; overflow:hidden; padding:0; margin:0}
+.breadcrumbs li {float:left;}
+.breadcrumbs li:after {content:">"; color:gray; padding:0 0.5em;}
+.breadcrumbs li:last-child:after {display:none;}
+
+.file-list {padding-left:20px;}
+.file-list ul {list-style:none; margin:0; padding:0}
+.file-list>ul ul {margin-left:1em;}
+.file-list .title {padding:0.2em 0; display:inline-block; cursor:pointer;}
+.file-list .title:before {content:"\e73c"; font-family:var(--iconfont); margin-right:0.2em;}
+.file-list .active>.title {font-weight:bold;}
+.file-list [data-type="dir"]>.title {color:#cd8200;}
+.file-list [data-type="dir"]>.title:before {content:"\e600"}
+.file-list .toggle {position:absolute; margin:6px 0 0 -16px; cursor:pointer; font-family:var(--iconfont); font-size:11px; color:gray;}
+.file-list .toggle:hover {color:rgb(var(--color-rgb))}
+.file-list .toggle:before {content:"\e65e"; }
+
+.meta {margin:0 0 1em 0; padding:0; overflow:hidden; list-style:none; color:rgba(var(--color-rgb), 0.9)}
+.meta li {float:left; margin-right:2em}
+.meta li:last-child {margin-right:0;}
+.meta li>label {color:rgba(var(--color-rgb), 0.7)}
+.meta li>label:after {content:"："}
+.meta li>label, .meta li>span {display:inline-block; vertical-align:top}
+
+article {max-width:70%; min-width:960px; margin:2em 0; padding:1em 0; box-sizing:border-box; counter-reset:h2; border-top:1px solid #ddd;}
+article h1, article h2, article h3, article h4, article h5, article h6 {font-weight:normal; margin:1em 0 0.5em;}
+article h1 {font-size:30px; margin-top:0;}
+article h2 {font-size:26px; counter-reset:h3}
+article h3 {font-size:20px; counter-reset:h4}
+article h4 {font-size:14px; color:#333;}
+article h2:before, article h3:before, article h4:before {display:inline-block; margin-right:0.5em}
+article h2:before {counter-increment:h2; content:counter(h2) ". "}
+article h3:before {counter-increment:h3; content:counter(h2) "." counter(h3) " "}
+article h4:before {counter-increment:h4; content:counter(h2) "." counter(h3) "." counter(h4) " "}
+article table {border-collapse:collapse; border-spacing:0; box-shadow:0 0 0 5px #e4e4e4; background-color:#fff;}
+article th, article td {border:1px solid #ccc; padding:0.25em 0.5em; text-align:left;}
+article thead tr {background-color:#ddd; text-shadow:1px 1px 1px white;}
+article tbody tr:nth-child(even) {background-color:#eeeeee59;}
+article th {white-space:nowrap;}
+article blockquote {padding:3px 10px; margin:1em 0; border-left:3px solid gray; background-color:#00000014}
+article img {max-width:90%; margin:1em 0; }
+article var {background-color:#a4e6ff; display:inline-block; padding:1px 5px; border-radius:3px; font-size:14px; font-style:normal}
+article sub {display:block; font-size:14px; color:gray;}
+article hr {display:block; height:0; border:none; border-top:1px solid #ccc; border-bottom:1px solid #eee; margin:10px 0;}
+article li ul,
+article li ol {margin-left:1em;}
+article strong {color:black; font-weight:bold}
+article code {color:green; transition:all 0.2s linear; background-color:#ffffff70 !important; max-height:500px; overflow-y:hidden; box-shadow:inset 1px 1px 1px #d2d2d2; display:block; padding:5px 10px; font-size:13px; font-family:Inconsolata, "Source Code Pro", serif;}
+article code:hover {overflow-y:auto; background-color:#fff !important;}
+article q {font-style:italic; color:gray; background-color:#fff;}
+article sup {font-size:8px}
+
+@media print {
+	body { background:none; }
+	aside { display:none; }
+	.article-wrap { height:auto; overflow:visible }
+	article { margin:0 auto; padding:0; box-shadow:none; }
+}</style>
+	<title>RFC2119中文释义</title>
+</head>
+<body>
+	<section class="page">
+		<aside>
+			<div class="project-title"><a href="">LitePHP开发者手册</a></div>
+			<form action="" class="project-search">
+				<input type="search" name="keyword" id="" placeholder="Search Docs" value="">
+				<button class="search-btn">Search</button>
+			</form>
+			<dl class="aside-mod">
+				<dt>DOCUMENTS</dt>
+				<dd class="file-list">
+					<ul><li data-type="file" class="active"><a href="?f=" class="title">MySQL数据 333 模型</a></li><li data-type="file" class="active"><a href="?f=" class="title">常规项目文件说明</a></li><li data-type="file" class="active"><a href="?f=" class="title">RFC2119中文释义</a></li><li data-type="file" class="active"><a href="?f=" class="title">API 接口模式</a></li><li data-type="file" class="active"><a href="?f=" class="title">配置说明</a></li><li data-type="file" class="active"><a href="?f=" class="title">MySQL数据库设计规范与原则</a></li><li data-type="file" class="active"><a href="?f=" class="title">PHP 编码检查</a></li><li data-type="file" class="active"><a href="?f=" class="title">安装使用</a></li></ul>				</dd>
+			</dl>
+		</aside>
+
+		<section class="container">
+			<ul class="breadcrumbs">
+				<li><a href="/">Home</a></li>
+				<li>RFC2119中文释义</li>
+			</ul>
+			<article>
+				<h1>RFC2119中文释义</h1>
+				<ul class="meta">
+					<li><label>创建</label><span>2020年04月15日 09:20</span></li>
+					<li>
+						<label>最后修改</label>
+						<span>
+							2020年01月14日 09:54						</span>
+					</li>
+				</ul>
+				<div class="content">
+					<h1>RFC2119中文释义</h1>
+<p>RFC（Request For Comments）指的关于互联网标准的正式文件，它们的内容必须写得非常清楚。</p>
+<p>表达的时候，必须严格区分哪些是"建议"（suggestion），哪些是"要求"（requirement）。
+所以，RFC2119专门对一些词语的涵义做出了规定，定义了五个关键词，表示"要求"的严格程度。</p>
+<table>
+<thead>
+<tr>
+<th>用语</th>
+<th>释义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MUST</td>
+<td>表示绝对要求这样做。REQUIRED或者SHALL，与之同义。</td>
+</tr>
+<tr>
+<td>MUST NOT</td>
+<td>表示绝对不要求这样做。SHALL NOT与之同义。</td>
+</tr>
+<tr>
+<td>SHOULD</td>
+<td>表示一般情况下应该这样做，但是在某些特定情况下可以忽视这个要求。RECOMMENDED与之同义。</td>
+</tr>
+<tr>
+<td>SHOULD NOT</td>
+<td>表示一般情况下不应该这样做，但是在某些特定情况下可以忽视这个要求。NOT RECOMMENDED与之同义。</td>
+</tr>
+<tr>
+<td>MAY</td>
+<td>表示这个要求完全是可选的（optional），你可以这样做，也可以不这样做。OPTIONAL与之同义。</td>
+</tr>
+</tbody>
+</table>
+<h2>以上英文对应中文翻译：</h2>
+<ul>
+<li>MUST、REQUIRED、SHALL：必须、应当</li>
+<li>MUST NOT、SHALL NOT：禁止</li>
+<li>SHOULD、RECOMMENDED：推荐</li>
+<li>SHOULD NOT、NOT RECOMMENDED：不推荐</li>
+<li>MAY、OPTIONAL：可以、可选</li>
+</ul>
+<p><a href="http://rfc.net/rfc2119.html">RFC2119官方说明</a>
+本文引用来源：<a href="http://www.ruanyifeng.com/blog/2007/03/rfc2119.html">阮一峰的网络日志</a>，作部分修改。</p>				</div>
+			</article>
+			<footer>
+				                <div class="copyrights">© Copyright 2020, All Rights Reserved by PHP Coder.</div>
+												<div class="project-last-update">Last Update: 2020-04-20 13:55:42</div>
+							</footer>
+
+		</section>
+	</section>
+	<script>
+		// setTimeout("location.reload()", 5000);
+	</script>
+</body>
+</html>
