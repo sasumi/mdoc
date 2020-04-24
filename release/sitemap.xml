@@ -2,22 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
         <url>
         <loc></loc>
-        <title>MySQL数据 333 模型</title>
-        <lastmod>1587355576</lastmod>
+        <title>abc</title>
+        <lastmod>1586916780</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
         <url>
         <loc></loc>
-        <title>常规项目文件说明</title>
-        <lastmod>1578966852</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-    </url>
-        <url>
-        <loc></loc>
-        <title>RFC2119中文释义</title>
-        <lastmod>1578966852</lastmod>
+        <title>sub</title>
+        <lastmod>1586914537</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>

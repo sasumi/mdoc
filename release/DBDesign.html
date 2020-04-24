@@ -5,115 +5,14 @@
 	<meta name="viewport"
 	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<style>@import "//at.alicdn.com/t/font_1744451_k0fvlq3eev.css";
-:root {
-	--color-rgb: 68, 68, 6;
-	--background-color-rgb:238, 238, 238;
-	--link-color-rgb:2, 125, 183;
-	--font-size:14px;
-	--line-height:1.6;
-	--font-family:Microsoft Yahei, SimSun, Courier new, Tahoma, Lucida Grande, serif;
-	--font:var(--font-size)/var(--line-height) var(--font-family);
-	--iconfont:iconfont, var(--font-family);
-}
-html {height:100%;}
-body {height:100%; overflow:hidden; box-sizing:border-box; background-color:rgb(var(--background-color-rgb)); color:rgb(var(--color-rgb)); font:var(--font);}
-body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {margin:0;padding:0}
-label, input, select {vertical-align:middle}
-q:before, q:after {content:''}
-p {margin:0.5em 0;}
-a {color:rgb(var(--link-color-rgb)); text-decoration:none;}
-a:hover {color:#00aeff}
-a[target=_blank]:after {content:"◥"; color:gray;}
-a:hover img { outline:1px solid rgb(var(--link-color-rgb));}
-ul {list-style-position:inside; padding:0 0.5em}
-ol {list-style-position:outside; margin-left:1em;}
-ol li {margin:0.5em 0;}
-
-.page {display:flex; height:100%; box-sizing:border-box;}
-aside {flex:1; max-width:250px; margin:1em 0; border-right:1px solid #fff; position:relative; padding:14px 1em;overflow-y:auto; overflow-x:hidden; text-shadow:1px 1px 1px #fff;}
-aside:after {content:""; display:block; height:100%; border-right:1px solid #ccc; position:absolute; right:0; top:0;}
-.container {flex:4; overflow-y:auto; padding:2em 3em;}
-footer:before {border-top:1px solid #ccc; border-bottom:1px solid #eee; display:block; width:100%; content:""; margin:1em 0;}
-footer .copyrights {color:gray;}
-footer .project-last-update {color:gray}
-
-.project-title {font-size:1.2rem; text-align:center; margin-bottom:1em;}
-.project-title a:before {content:"\e616"; font-family:var(--iconfont); margin-right:0.1em;}
-
-.project-search {position:relative;}
-.project-search input[type=search]{background:white; border:none; box-shadow:inset 1px 1px 1px 1px #cccccc8c; padding:0.5em 24px 0.5em 1em; box-sizing:border-box; border-radius:30px; width:100%; outline:none;}
-.project-search .search-btn {position:absolute; right:5px; top:8px; width:24px; overflow:hidden; background:transparent; border:none; cursor:pointer; outline:none;}
-.project-search .search-btn:hover {color:rgb(var(--link-color-rgb))}
-.project-search .search-btn:before {font-family:var(--iconfont); content:"\e621"; padding-right:10px;}
-
-.aside-mod {margin-top:2em;}
-.aside-mod dt {margin-bottom:0.5em; color:#aaa;}
-
-.breadcrumbs {list-style:none; overflow:hidden; padding:0; margin:0}
-.breadcrumbs li {float:left;}
-.breadcrumbs li:after {content:">"; color:gray; padding:0 0.5em;}
-.breadcrumbs li:last-child:after {display:none;}
-
-.file-list {padding-left:20px;}
-.file-list ul {list-style:none; margin:0; padding:0}
-.file-list>ul ul {margin-left:1em;}
-.file-list .title {padding:0.2em 0; display:inline-block; cursor:pointer;}
-.file-list .title:before {content:"\e73c"; font-family:var(--iconfont); margin-right:0.2em;}
-.file-list .active>.title {font-weight:bold;}
-.file-list [data-type="dir"]>.title {color:#cd8200;}
-.file-list [data-type="dir"]>.title:before {content:"\e600"}
-.file-list .toggle {position:absolute; margin:6px 0 0 -16px; cursor:pointer; font-family:var(--iconfont); font-size:11px; color:gray;}
-.file-list .toggle:hover {color:rgb(var(--color-rgb))}
-.file-list .toggle:before {content:"\e65e"; }
-
-.meta {margin:0 0 1em 0; padding:0; overflow:hidden; list-style:none; color:rgba(var(--color-rgb), 0.9)}
-.meta li {float:left; margin-right:2em}
-.meta li:last-child {margin-right:0;}
-.meta li>label {color:rgba(var(--color-rgb), 0.7)}
-.meta li>label:after {content:"："}
-.meta li>label, .meta li>span {display:inline-block; vertical-align:top}
-
-article {max-width:70%; min-width:960px; margin:2em 0; padding:1em 0; box-sizing:border-box; counter-reset:h2; border-top:1px solid #ddd;}
-article h1, article h2, article h3, article h4, article h5, article h6 {font-weight:normal; margin:1em 0 0.5em;}
-article h1 {font-size:30px; margin-top:0;}
-article h2 {font-size:26px; counter-reset:h3}
-article h3 {font-size:20px; counter-reset:h4}
-article h4 {font-size:14px; color:#333;}
-article h2:before, article h3:before, article h4:before {display:inline-block; margin-right:0.5em}
-article h2:before {counter-increment:h2; content:counter(h2) ". "}
-article h3:before {counter-increment:h3; content:counter(h2) "." counter(h3) " "}
-article h4:before {counter-increment:h4; content:counter(h2) "." counter(h3) "." counter(h4) " "}
-article table {border-collapse:collapse; border-spacing:0; box-shadow:0 0 0 5px #e4e4e4; background-color:#fff;}
-article th, article td {border:1px solid #ccc; padding:0.25em 0.5em; text-align:left;}
-article thead tr {background-color:#ddd; text-shadow:1px 1px 1px white;}
-article tbody tr:nth-child(even) {background-color:#eeeeee59;}
-article th {white-space:nowrap;}
-article blockquote {padding:3px 10px; margin:1em 0; border-left:3px solid gray; background-color:#00000014}
-article img {max-width:90%; margin:1em 0; }
-article var {background-color:#a4e6ff; display:inline-block; padding:1px 5px; border-radius:3px; font-size:14px; font-style:normal}
-article sub {display:block; font-size:14px; color:gray;}
-article hr {display:block; height:0; border:none; border-top:1px solid #ccc; border-bottom:1px solid #eee; margin:10px 0;}
-article li ul,
-article li ol {margin-left:1em;}
-article strong {color:black; font-weight:bold}
-article code {color:green; transition:all 0.2s linear; background-color:#ffffff70 !important; max-height:500px; overflow-y:hidden; box-shadow:inset 1px 1px 1px #d2d2d2; display:block; padding:5px 10px; font-size:13px; font-family:Inconsolata, "Source Code Pro", serif;}
-article code:hover {overflow-y:auto; background-color:#fff !important;}
-article q {font-style:italic; color:gray; background-color:#fff;}
-article sup {font-size:8px}
-
-@media print {
-	body { background:none; }
-	aside { display:none; }
-	.article-wrap { height:auto; overflow:visible }
-	article { margin:0 auto; padding:0; box-shadow:none; }
-}</style>
+	<link rel="stylesheet" href="assert/style.css">
 	<title>MySQL数据库设计规范与原则</title>
+	<script src="https://s.huapx.com/src/vendor/jquery/jquery-1.8.3.min.js"></script>
 </head>
 <body>
 	<section class="page">
 		<aside>
-			<div class="project-title"><a href="">LitePHP开发者手册</a></div>
+			<div class="project-title"><a href=""></a></div>
 			<form action="" class="project-search">
 				<input type="search" name="keyword" id="" placeholder="Search Docs" value="">
 				<button class="search-btn">Search</button>
@@ -121,7 +20,7 @@ article sup {font-size:8px}
 			<dl class="aside-mod">
 				<dt>DOCUMENTS</dt>
 				<dd class="file-list">
-					<ul><li data-type="file" class="active"><a href="?f=" class="title">MySQL数据 333 模型</a></li><li data-type="file" class="active"><a href="?f=" class="title">常规项目文件说明</a></li><li data-type="file" class="active"><a href="?f=" class="title">RFC2119中文释义</a></li><li data-type="file" class="active"><a href="?f=" class="title">API 接口模式</a></li><li data-type="file" class="active"><a href="?f=" class="title">配置说明</a></li><li data-type="file" class="active"><a href="?f=" class="title">MySQL数据库设计规范与原则</a></li><li data-type="file" class="active"><a href="?f=" class="title">PHP 编码检查</a></li><li data-type="file" class="active"><a href="?f=" class="title">安装使用</a></li></ul>				</dd>
+					<ul><li data-type="dir" class="active"><span class="toggle"></span><span class="title">abc</span><ul><li data-type="dir" class="active"><span class="toggle"></span><span class="title">ok</span><ul><li data-type="file" class="active"><a href="?f=" class="title">MySQL数据 333 模型</a></li></ul></li><li data-type="file" class="active"><a href="?f=" class="title">常规项目文件说明</a></li></ul></li><li data-type="dir" class="active"><span class="toggle"></span><span class="title">sub</span><ul><li data-type="file" class="active"><a href="?f=" class="title">RFC2119中文释义</a></li></ul></li><li data-type="file" class="active"><a href="?f=" class="title">API 接口模式</a></li><li data-type="file" class="active"><a href="?f=" class="title">配置说明</a></li><li data-type="file" class="active"><a href="?f=" class="title">MySQL数据库设计规范与原则</a></li><li data-type="file" class="active"><a href="?f=" class="title">PHP 编码检查</a></li><li data-type="file" class="active"><a href="?f=" class="title">安装使用</a></li></ul>				</dd>
 			</dl>
 		</aside>
 
@@ -141,128 +40,13 @@ article sup {font-size:8px}
 					</li>
 				</ul>
 				<div class="content">
-					<h1>MySQL数据库设计规范与原则</h1>
-<p>[TOC]</p>
-<h2>MYSQL数据库设计规范</h2>
-<h3>数据库命名规范</h3>
-<ul>
-<li>采用26个英文字母(区分大小写)和0-9的自然数(经常不需要)加上下划线'_'组成;  </li>
-<li>命名简洁明确(长度不能超过30个字符);  <pre><code>例如：user, stat, log, 也可以wifi_user, wifi_stat, wifi_log给数据库加个前缀;  
-除非是备份数据库可以加0-9的自然数：user_db_20151210;  </code></pre>
-</li>
-</ul>
-<h3>数据库表名命名规范</h3>
-<ul>
-<li>采用26个英文字母(区分大小写)和0-9的自然数(经常不需要)加上下划线'_'组成;  </li>
-<li>命名简洁明确,多个单词用下划线'_'分隔;  <pre><code>例如：user_login, user_profile, user_detail, user_role, user_role_relation,  
-user_role_right, user_role_right_relation  
-表前缀'user_'可以有效的把相同关系的表显示在一起;  </code></pre>
-</li>
-</ul>
-<h3>数据库表字段名命名规范</h3>
-<ul>
-<li>采用26个英文字母(区分大小写)和0-9的自然数(经常不需要)加上下划线'_'组成;  </li>
-<li>命名简洁明确,多个单词用下划线'_'分隔; 例如：user_login表字段 user_id, user_name, pass_word, email, ticket, status, mobile, add_time;  </li>
-<li>每个表中必须有自增主键,add_time(默认系统时间)  </li>
-<li>表与表之间的相关联字段名称要求尽可能的相同;  </li>
-</ul>
-<h3>数据库表字段类型规范</h3>
-<ul>
-<li>用尽量少的存储空间来存数一个字段的数据;  </li>
-<li>例如：能使用int就不要使用varchar、char,能用varchar(16)就不要使用varchar(256);  </li>
-<li>IP地址最好使用int类型;  </li>
-<li>固定长度的类型最好使用char,例如：邮编;  </li>
-<li>能使用tinyint就不要使用smallint,int;  </li>
-<li>最好给每个字段一个默认值,最好不能为null;  </li>
-</ul>
-<h3>数据库表索引规范</h3>
-<ul>
-<li>命名简洁明确,例如：user_login表user_name字段的索引应为user_name_index唯一索引;  </li>
-<li>为每个表创建一个主键索引;  </li>
-<li>为每个表创建合理的索引;  </li>
-<li>建立复合索引请慎重;  </li>
-</ul>
-<h3>简单熟悉数据库范式</h3>
-<ol>
-<li>
-<p>第一范式(1NF)：字段值具有原子性,不能再分(所有关系型数据库系统都满足第一范式);例如：姓名字段,其中姓和名是一个整体,如果区分姓和名那么必须设立两个独立字段;  </p>
-</li>
-<li>
-<p>第二范式(2NF)：一个表必须有主键,即每行数据都能被唯一的区分;<br />
-备注：必须先满足第一范式;  </p>
-</li>
-<li>
-<p>第三范式(3NF)：一个表中不能包涵其他相关表中非关键字段的信息,即数据表不能有沉余字段;<br />
-备注：必须先满足第二范式;  </p>
-</li>
-</ol>
-<pre><code>备注：往往我们在设计表中不能遵守第三范式,因为合理的沉余字段将会给我们减少join的查询;  
-  例如：相册表中会添加图片的点击数字段,在相册图片表中也会添加图片的点击数字段;  </code></pre>
-<h2>MYSQL数据库设计原则</h2>
-<h3>核心原则</h3>
-<ul>
-<li>不在数据库做运算;  </li>
-<li>cpu计算务必移至业务层;  </li>
-<li>控制列数量(字段少而精,字段数建议在20以内);  </li>
-<li>平衡范式与冗余(效率优先；往往牺牲范式)  </li>
-<li>拒绝3B(拒绝大SQL语句：big SQL、拒绝大事物：big transaction、拒绝大批量：big batch);  </li>
-</ul>
-<h3>字段类原则</h3>
-<ul>
-<li>用好数值类型(用合适的字段类型节约空间);  </li>
-<li>字符转化为数字(能转化的最好转化,同样节约空间、提高查询性能);  </li>
-<li>避免使用NULL字段(NULL字段很难查询优化、NULL字段的索引需要额外空间、NULL字段的复合索引无效);  </li>
-<li>少用text类型(尽量使用varchar代替text字段);  </li>
-</ul>
-<h3>索引类原则</h3>
-<ul>
-<li>合理使用索引(改善查询,减慢更新,索引一定不是越多越好);  </li>
-<li>字符字段必须建前缀索引;  </li>
-<li>不在索引做列运算;  </li>
-<li>innodb主键推荐使用自增列(主键建立聚簇索引,主键不应该被修改,字符串不应该做主键)(理解Innodb的索引保存结构就知道了);  </li>
-<li>不用外键(由程序保证约束);  </li>
-</ul>
-<h3>SQL类原则</h3>
-<ul>
-<li>SQL语句尽可能简单(一条SQL只能在一个cpu运算,大语句拆小语句,减少锁时间,一条大SQL可以堵死整个库);  </li>
-<li>简单的事务;  </li>
-<li>避免使用trig/func(触发器、函数不用客户端程序取而代之);  </li>
-<li>不用select *(消耗cpu,io,内存,带宽,这种程序不具有扩展性);  </li>
-<li>OR改写为IN(or的效率是n级别);  </li>
-<li>OR改写为UNION(mysql的索引合并很弱智);  <pre><code class="language-SQL">select id from t where phone = ’159′ or name = ‘john’;  </code></pre>
-<p>=&gt; </p>
-<pre><code class="language-SQL">select id from t where phone=’159′  
-union  
-select id from t where name=’jonh’  </code></pre>
-</li>
-<li>避免负向%;  </li>
-<li>慎用count( * );  </li>
-<li>limit高效分页(limit越大，效率越低);  </li>
-<li>使用union all替代union(union有去重开销);  </li>
-<li>少用连接join;  </li>
-<li>使用group by;  </li>
-<li>请使用同类型比较;  </li>
-<li>打散批量更新;  </li>
-</ul>
-<h3>性能分析工具</h3>
-<ul>
-<li>show profile;  </li>
-<li>mysqlsla;  </li>
-<li>mysqldumpslow;  </li>
-<li>explain;  </li>
-<li>show slow log;  </li>
-<li>show processlist;  </li>
-</ul>				</div>
+									</div>
 			</article>
 			<footer>
-				                <div class="copyrights">© Copyright 2020, All Rights Reserved by PHP Coder.</div>
-												<div class="project-last-update">Last Update: 2020-04-20 13:55:42</div>
-							</footer>
+											</footer>
 
 		</section>
 	</section>
-	<script>
-		// setTimeout("location.reload()", 5000);
-	</script>
+	<script src="assert/global.js"></script>
 </body>
 </html>

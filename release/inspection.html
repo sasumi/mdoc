@@ -5,115 +5,14 @@
 	<meta name="viewport"
 	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<style>@import "//at.alicdn.com/t/font_1744451_k0fvlq3eev.css";
-:root {
-	--color-rgb: 68, 68, 6;
-	--background-color-rgb:238, 238, 238;
-	--link-color-rgb:2, 125, 183;
-	--font-size:14px;
-	--line-height:1.6;
-	--font-family:Microsoft Yahei, SimSun, Courier new, Tahoma, Lucida Grande, serif;
-	--font:var(--font-size)/var(--line-height) var(--font-family);
-	--iconfont:iconfont, var(--font-family);
-}
-html {height:100%;}
-body {height:100%; overflow:hidden; box-sizing:border-box; background-color:rgb(var(--background-color-rgb)); color:rgb(var(--color-rgb)); font:var(--font);}
-body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {margin:0;padding:0}
-label, input, select {vertical-align:middle}
-q:before, q:after {content:''}
-p {margin:0.5em 0;}
-a {color:rgb(var(--link-color-rgb)); text-decoration:none;}
-a:hover {color:#00aeff}
-a[target=_blank]:after {content:"◥"; color:gray;}
-a:hover img { outline:1px solid rgb(var(--link-color-rgb));}
-ul {list-style-position:inside; padding:0 0.5em}
-ol {list-style-position:outside; margin-left:1em;}
-ol li {margin:0.5em 0;}
-
-.page {display:flex; height:100%; box-sizing:border-box;}
-aside {flex:1; max-width:250px; margin:1em 0; border-right:1px solid #fff; position:relative; padding:14px 1em;overflow-y:auto; overflow-x:hidden; text-shadow:1px 1px 1px #fff;}
-aside:after {content:""; display:block; height:100%; border-right:1px solid #ccc; position:absolute; right:0; top:0;}
-.container {flex:4; overflow-y:auto; padding:2em 3em;}
-footer:before {border-top:1px solid #ccc; border-bottom:1px solid #eee; display:block; width:100%; content:""; margin:1em 0;}
-footer .copyrights {color:gray;}
-footer .project-last-update {color:gray}
-
-.project-title {font-size:1.2rem; text-align:center; margin-bottom:1em;}
-.project-title a:before {content:"\e616"; font-family:var(--iconfont); margin-right:0.1em;}
-
-.project-search {position:relative;}
-.project-search input[type=search]{background:white; border:none; box-shadow:inset 1px 1px 1px 1px #cccccc8c; padding:0.5em 24px 0.5em 1em; box-sizing:border-box; border-radius:30px; width:100%; outline:none;}
-.project-search .search-btn {position:absolute; right:5px; top:8px; width:24px; overflow:hidden; background:transparent; border:none; cursor:pointer; outline:none;}
-.project-search .search-btn:hover {color:rgb(var(--link-color-rgb))}
-.project-search .search-btn:before {font-family:var(--iconfont); content:"\e621"; padding-right:10px;}
-
-.aside-mod {margin-top:2em;}
-.aside-mod dt {margin-bottom:0.5em; color:#aaa;}
-
-.breadcrumbs {list-style:none; overflow:hidden; padding:0; margin:0}
-.breadcrumbs li {float:left;}
-.breadcrumbs li:after {content:">"; color:gray; padding:0 0.5em;}
-.breadcrumbs li:last-child:after {display:none;}
-
-.file-list {padding-left:20px;}
-.file-list ul {list-style:none; margin:0; padding:0}
-.file-list>ul ul {margin-left:1em;}
-.file-list .title {padding:0.2em 0; display:inline-block; cursor:pointer;}
-.file-list .title:before {content:"\e73c"; font-family:var(--iconfont); margin-right:0.2em;}
-.file-list .active>.title {font-weight:bold;}
-.file-list [data-type="dir"]>.title {color:#cd8200;}
-.file-list [data-type="dir"]>.title:before {content:"\e600"}
-.file-list .toggle {position:absolute; margin:6px 0 0 -16px; cursor:pointer; font-family:var(--iconfont); font-size:11px; color:gray;}
-.file-list .toggle:hover {color:rgb(var(--color-rgb))}
-.file-list .toggle:before {content:"\e65e"; }
-
-.meta {margin:0 0 1em 0; padding:0; overflow:hidden; list-style:none; color:rgba(var(--color-rgb), 0.9)}
-.meta li {float:left; margin-right:2em}
-.meta li:last-child {margin-right:0;}
-.meta li>label {color:rgba(var(--color-rgb), 0.7)}
-.meta li>label:after {content:"："}
-.meta li>label, .meta li>span {display:inline-block; vertical-align:top}
-
-article {max-width:70%; min-width:960px; margin:2em 0; padding:1em 0; box-sizing:border-box; counter-reset:h2; border-top:1px solid #ddd;}
-article h1, article h2, article h3, article h4, article h5, article h6 {font-weight:normal; margin:1em 0 0.5em;}
-article h1 {font-size:30px; margin-top:0;}
-article h2 {font-size:26px; counter-reset:h3}
-article h3 {font-size:20px; counter-reset:h4}
-article h4 {font-size:14px; color:#333;}
-article h2:before, article h3:before, article h4:before {display:inline-block; margin-right:0.5em}
-article h2:before {counter-increment:h2; content:counter(h2) ". "}
-article h3:before {counter-increment:h3; content:counter(h2) "." counter(h3) " "}
-article h4:before {counter-increment:h4; content:counter(h2) "." counter(h3) "." counter(h4) " "}
-article table {border-collapse:collapse; border-spacing:0; box-shadow:0 0 0 5px #e4e4e4; background-color:#fff;}
-article th, article td {border:1px solid #ccc; padding:0.25em 0.5em; text-align:left;}
-article thead tr {background-color:#ddd; text-shadow:1px 1px 1px white;}
-article tbody tr:nth-child(even) {background-color:#eeeeee59;}
-article th {white-space:nowrap;}
-article blockquote {padding:3px 10px; margin:1em 0; border-left:3px solid gray; background-color:#00000014}
-article img {max-width:90%; margin:1em 0; }
-article var {background-color:#a4e6ff; display:inline-block; padding:1px 5px; border-radius:3px; font-size:14px; font-style:normal}
-article sub {display:block; font-size:14px; color:gray;}
-article hr {display:block; height:0; border:none; border-top:1px solid #ccc; border-bottom:1px solid #eee; margin:10px 0;}
-article li ul,
-article li ol {margin-left:1em;}
-article strong {color:black; font-weight:bold}
-article code {color:green; transition:all 0.2s linear; background-color:#ffffff70 !important; max-height:500px; overflow-y:hidden; box-shadow:inset 1px 1px 1px #d2d2d2; display:block; padding:5px 10px; font-size:13px; font-family:Inconsolata, "Source Code Pro", serif;}
-article code:hover {overflow-y:auto; background-color:#fff !important;}
-article q {font-style:italic; color:gray; background-color:#fff;}
-article sup {font-size:8px}
-
-@media print {
-	body { background:none; }
-	aside { display:none; }
-	.article-wrap { height:auto; overflow:visible }
-	article { margin:0 auto; padding:0; box-shadow:none; }
-}</style>
+	<link rel="stylesheet" href="assert/style.css">
 	<title>PHP 编码检查</title>
+	<script src="https://s.huapx.com/src/vendor/jquery/jquery-1.8.3.min.js"></script>
 </head>
 <body>
 	<section class="page">
 		<aside>
-			<div class="project-title"><a href="">LitePHP开发者手册</a></div>
+			<div class="project-title"><a href=""></a></div>
 			<form action="" class="project-search">
 				<input type="search" name="keyword" id="" placeholder="Search Docs" value="">
 				<button class="search-btn">Search</button>
@@ -121,7 +20,7 @@ article sup {font-size:8px}
 			<dl class="aside-mod">
 				<dt>DOCUMENTS</dt>
 				<dd class="file-list">
-					<ul><li data-type="file" class="active"><a href="?f=" class="title">MySQL数据 333 模型</a></li><li data-type="file" class="active"><a href="?f=" class="title">常规项目文件说明</a></li><li data-type="file" class="active"><a href="?f=" class="title">RFC2119中文释义</a></li><li data-type="file" class="active"><a href="?f=" class="title">API 接口模式</a></li><li data-type="file" class="active"><a href="?f=" class="title">配置说明</a></li><li data-type="file" class="active"><a href="?f=" class="title">MySQL数据库设计规范与原则</a></li><li data-type="file" class="active"><a href="?f=" class="title">PHP 编码检查</a></li><li data-type="file" class="active"><a href="?f=" class="title">安装使用</a></li></ul>				</dd>
+					<ul><li data-type="dir" class="active"><span class="toggle"></span><span class="title">abc</span><ul><li data-type="dir" class="active"><span class="toggle"></span><span class="title">ok</span><ul><li data-type="file" class="active"><a href="?f=" class="title">MySQL数据 333 模型</a></li></ul></li><li data-type="file" class="active"><a href="?f=" class="title">常规项目文件说明</a></li></ul></li><li data-type="dir" class="active"><span class="toggle"></span><span class="title">sub</span><ul><li data-type="file" class="active"><a href="?f=" class="title">RFC2119中文释义</a></li></ul></li><li data-type="file" class="active"><a href="?f=" class="title">API 接口模式</a></li><li data-type="file" class="active"><a href="?f=" class="title">配置说明</a></li><li data-type="file" class="active"><a href="?f=" class="title">MySQL数据库设计规范与原则</a></li><li data-type="file" class="active"><a href="?f=" class="title">PHP 编码检查</a></li><li data-type="file" class="active"><a href="?f=" class="title">安装使用</a></li></ul>				</dd>
 			</dl>
 		</aside>
 
@@ -141,224 +40,13 @@ article sup {font-size:8px}
 					</li>
 				</ul>
 				<div class="content">
-					<h1>PHP 编码检查</h1>
-<p>[TOC]</p>
-<h2>前言</h2>
-<p>编写本手册目的在于：</p>
-<ol>
-<li>规范程序开发人员代码编写行为 </li>
-<li>减少发布环境编码缺陷 </li>
-<li>纳入技术开发人员绩效考核</li>
-</ol>
-<p>当前编码检查语言遵循 <a href="http://rfc.net/rfc2119.html">RFC2119</a> (<a href="assert/rfc2119.md">中文版</a>)标准，文中将出现：<strong>禁止</strong> 、<strong>推荐</strong>、 <strong>不推荐</strong>、<strong>可以</strong> 等词汇用语。</p>
-<h2>软件环境版本</h2>
-<p>当前编码标准主要针对以下软件版本环境：</p>
-<ol>
-<li>PHP：5.6+版本语法</li>
-<li>HTML：4.0+版本语法</li>
-<li>CSS：2.0版本语法，不包含针对特定浏览器、场景进行HACK代码</li>
-<li>JavaScript+</li>
-<li>IDE推荐：PHPStorm、Eclipse PHP、Aptana Studio、Visual Studio，使用其他IDE应当具备同等语法检测能力。 不推荐长期使用类似：Notepad、Notepad++、Sublime、VIM（VI）、Emacs、ATOM、EditPlus、UltraEdit等仅有单文件语义检查软件。</li>
-</ol>
-<h2>检查项目</h2>
-<p>严格检查标准表示，以下所列举（包含并不仅限于）代码检查项目，将作为代码质量考核标准首要项目。
-技术开发人员在编码过程中，如提交涉及 <strong>禁止</strong> 用语项目代码内容，将被视作代码 <strong>严重缺陷</strong> 评估。</p>
-<h3>禁止在foreach循环中使用引用方式对元素进行修改</h3>
-<pre><code class="language-php">foreach ($list as $k =&gt; &amp;$item) {
-    //
-}</code></pre>
-<h3>禁止在Controller、Class、Model等业务数值处理逻辑中使用 <em>number_format</em> 方法进行数字取位运算</h3>
-<p>除非真实需要处理数字表现加上千分位分隔符，否则千分位数字精度取位必须使用 round()或其他精度处理函数</p>
-<h3>禁止使用空置try···catch语句，消耗代码性能，浪费代码行数</h3>
-<pre><code class="language-php">try {
-    //....
-} catch(Exception $e){
-    throw $e;
-}</code></pre>
-<h3>禁止将数据处理脚本、一次性数据清洗脚本、测试脚本、测试代码放入正常业务Controller、Model、Business、Service里面。</h3>
-<p>接口可用性校验脚本除外，建议将所有类似代码统一放入script代码（或其他独立目录），或不放入SVN主线。</p>
-<h3>禁止代码中出现：未定义变量、未定义常量、未定义函数、未定义类名、未定义方法（魔术方法特别对待）</h3>
-<p>如变量方法为魔术方法、或全局变量，建议使用PHPDoc注释在文件中重新声明。模板文件中，可以出现未定义变量。</p>
-<pre><code class="language-php">//场景1：常量当做字符串使用
-$a = $row[name]; //error
-$a = $row['name']; //correct
-$_ids=$select_code-&gt;asArray()-&gt;getPairData("item_id", item_id); //error
-
-//场景2：类名大小写与原类名不一致
-$app = new APPlication(); //error
-
-//场景3：函数名大小写错误
-$str = str_Replace('aa','b', $source); //error
-$len = strLen('aaaa'); //error
-
-//场景4：方法名大小写错误
-$a = $obj-&gt;GeTmyName(); //error</code></pre>
-<h3>禁止遗留个人调试、废弃逻辑代码、功能测试、接口测试、定位问题、临时处理脚本或其他 无实际意义注释代码</h3>
-<p>如需保留该部分代码，可以通过 @example Doc备注方式阐述清楚。</p>
-<pre><code class="language-php">//场景1：
-//dump('xxx'); die;
-
-//场景2：
-//暂时不启用该功能
-//$a = new A();
-//$a-&gt;execute();
-
-//场景3：
-if("done"==$done){ //查看已经完成的
-//$select-&gt;where("clearance_name&lt;&gt;'' and clearance_code&lt;&gt;'' and clearance_price&gt;0");
-}
-
-//场景4：
-//审核通过的状态下
-//$select-&gt;where("status=?",Table_Prd_Product::STATUS_ACCESS);
-//品类控制
-//$select = ACL::addCatalogControl($select);
-//个人级部门级控制
-//$select = ACL::addDataControl($select,"purchase_userid","clearance@product");
-
-//场景4：空白注释
-//删除当前品类下的所有负责人
-//
-//
-foreach ($user_cat as $user){</code></pre>
-<h3>禁止在URL拼接方法不考虑字符：?与&amp; 检测处理</h3>
-<p>拼接URL时，不考虑原串是否包含?或者&amp;字符，可能会因为路由方式的改变，导致拼接逻辑错误。
-如： </p>
-<pre><code class="language-php">var url = "&lt;?=url("shipping/getShippingMethodByWh@common")?&gt;"+"?id="+$(this).val();
-$("#btn-batch_code").attr('href',"&lt;?=url("batch/getcode")?&gt;"+"/account/"+account);</code></pre>
-<h3>禁止出现代码语法解析错误</h3>
-<p>这里主要针对IDE（具备跨文件语义检查IDE）能够及时检测出代码格式错误（ERROR），包含以下几种场景：</p>
-<ul>
-<li>PHP语法错误</li>
-<li>HTML标签嵌套不合理，如：</li>
-</ul>
-<pre><code class="language-html">&lt;table&gt;
-    &lt;div&gt;
-        &lt;tbody&gt;&lt;/tbody&gt;
-    &lt;/div&gt;
-&lt;/table&gt;</code></pre>
-<ul>
-<li>
-<p>CSS属性拼写错误，如：</p>
-<pre><code class="language-css">a {magin-top:1em} /** fail **/</code></pre>
-</li>
-<li>
-<p>CSS包含错误分号，如：</p>
-<pre><code class="language-css">a {margin-top:1em}; /** fail **/</code></pre>
-</li>
-</ul>
-<h3>禁止使用 <em>strtotime("$m month")</em> 来计算月份</h3>
-<p><strong>由于 -xx month不能计算出准确天数，如在使用过程严格需要计算天数，需要使用 mktime来推导</strong></p>
-<h3>禁止出现单词拼写错误</h3>
-<p><em>单词拼写检查不包含：专有名词（如google、sina）、单词缩写（单词缩写规则请自行参考网上规则）、精简变量、前缀、混淆字符、密码等。</em></p>
-<h3>不推荐在使用多个属性、常用值时，未定成为常量、公共变量</h3>
-<p>多个属性一般指包含3个以上属性，某些简单实用场景：如is_del, is_update等可酌情考虑</p>
-<pre><code class="language-php">//场景1：订单类型可定义成为订单类常量
-if($order_type == 'F'){
-    //...
-} else if($order_type == 'O'){
-    //...
-}
-
-//场景2：status、state、type等具备多个固定值时，需要针对每个固定值定义常量，尤其禁止使用常量值进行运算、比较！！！
-$sql = "SELECT * FROM order WHERE status &gt; 1";
-
-//场景3：需要针对固定文本定义全局文本数组，方便其他程序公用
-if($order_type == ORDER_TYPE_NORMAL){
-    echo "正常";
-}
-if($order_type == ORDER_TYPE_DISCARD){
-    echo "废弃";
-}
-if($order_type == ORDER_TYPE_PUBLISH){
-    echo "发布";
-}</code></pre>
-<h3>禁止在代码公开访问目录遗留有数据泄露风险的文件</h3>
-<p>文件包含：</p>
-<ul>
-<li>源代码压缩包，如：source.tar.gz</li>
-<li>SQL数据文件，如：bak.sql</li>
-<li>临时处理数据文件，如：userlist.txt</li>
-<li>包含phpinfo()检测代码，如：phpinfo.php</li>
-<li>未测试隐藏入口脚本，如：back.php</li>
-<li>log日志文件，如：www.a.com-error.log</li>
-<li>敏感信息配置文件，如：database.php，database.yaml</li>
-<li>产品、技术相关敏感文档：如：加密协议.doc</li>
-</ul>
-<p>如项目协同需要，可以将部分文档放入doc目录。</p>
-<h3>禁止保留废弃数据库表、字段</h3>
-<p>因数据处理、临时备份等原因，遗留数据库表、字段，在完成操作之后应当及时备份、清理。
-如：<em>prd_product_copy</em>、 <em>prd_product_bak</em>、<em>content_bak</em>等，遗留备份数据将可能导致其他研发误使用该数据。</p>
-<h3>推荐针对目录变量统一使用斜杠作为目录分隔符（/），目录结尾统一追加斜杠</h3>
-<ol>
-<li>
-<p>Windows、*inux系统中，统一使用斜杠作为多级目录分割符。不推荐使用反斜杠或混合两种格式用法。
-例如：
-​    /user/home/helloworld/  [推荐]
-​    C:/Users/Jack/helloworld/ [推荐]
-​    C:\Users\Jack/helloworld/ [不推荐]
-​    C:\Users\Jack\helloworld\ [不推荐]</p>
-</li>
-<li>
-<p>由于框架程序涉及较少针对目录（符号链接）进行读写操作，为统一目录拼接规范、避免远程执行漏洞，请在目录结尾追加斜杠。</p>
-</li>
-</ol>
-<p>附目录规则简单说明：</p>
-<blockquote>
-<ul>
-<li>
-<p>目录表达式中，多个 [/] 会被解析为单个 [/]，表达式头部除外（某些场景可能会表达为重置为默认协议）。
-如： /user///home// 等价于 /user/home/</p>
-</li>
-<li>
-<p>目录表达式中，若使用结尾 [/] ，这针对该目录表达式操作一般为针对目录内部，而不是目录本身</p>
-<p>如：mv /path/dir /home/parent/ 与 mv /path/dir home/newpath 的区别，
-而例如 rmdir /home/path/ 与 rmdir /home/path 是无区别的。</p>
-</li>
-<li>
-<p>由于Windows为了兼容DOS目录格式，因此Windows默认目录表达一般使用反斜杠。</p>
-</li>
-</ul>
-</blockquote>
-<h2>其他辅助检查</h2>
-<blockquote>
-<ul>
-<li>告警检查主要基于在PHP IDE语法识别为出发点，提醒编码人员在编码过程中，对未识别变量、方法、类型等进行重定义。</li>
-<li>当前推荐使用 <em>PHPStorm</em> 系列产品（以下以<em>PHPStorm</em>为基准）进行PHP语法、语义检查，以下告警检查标准为编码过程推荐标准。</li>
-<li><strong>代码质量评级标准中，最高质量标准必须通过所有IDE语义检查！</strong></li>
-</ul>
-</blockquote>
-<h3>设置PHP版本环境、包含外部类库</h3>
-<p>IDE环境应当正确设置PHP版本信息，PHP命令检查器（PHP CLI Interpreter）以及项目涉及框架等类库类库。
-![IDE外部库设置][1]</p>
-<p><strong> PHPDoc[^phpdoc]告警</strong> </p>
-<p>PHP Doc告警包含以下几点：</p>
-<ul>
-<li>缺失参数 <strong>@param</strong>、缺失返回声明 <strong>@return</strong>、缺失异常声明 <strong>@throws</strong></li>
-<li>缺失类型声明、错误类型声明，如：<pre><code class="language-php">class A{
-  /**
-  *  处理时间显示精确度为分钟
-  * @param $time 类型 [fail]
-  * @param string $str [fail]
-  * @return false|string
-  */
-  public static function showTime(array $time, array $str){
-      return '';
-  }
-}</code></pre>
-<p><strong> 废弃文件未及时处理</strong></p>
-</li>
-</ul>				</div>
+									</div>
 			</article>
 			<footer>
-				                <div class="copyrights">© Copyright 2020, All Rights Reserved by PHP Coder.</div>
-												<div class="project-last-update">Last Update: 2020-04-20 13:55:42</div>
-							</footer>
+											</footer>
 
 		</section>
 	</section>
-	<script>
-		// setTimeout("location.reload()", 5000);
-	</script>
+	<script src="assert/global.js"></script>
 </body>
 </html>

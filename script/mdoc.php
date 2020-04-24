@@ -64,17 +64,24 @@ $logger->info('resolving articles');
 $project_last_update = time();
 $project = parse_ini_file(MDOC_DOCUMENT_CONFIG);
 
-foreach($article_list as $article){
-	$logger->info('Building article', $article['title']);
-	$save_path = MDOC_RELEASE_ROOT.DIRECTORY_SEPARATOR.$article['path'];
-	if(!is_dir($save_path)){
-		mkdir($save_path, 0644, true);
+function build($article_list, $logger){
+	foreach($article_list as $article){
+		$logger->info('Building article', $article['title']);
+		$save_path = MDOC_RELEASE_ROOT.DIRECTORY_SEPARATOR.$article['path'];
+		if(!is_dir($save_path)){
+			mkdir($save_path, 0644, true);
+		}
+		ob_start();
+		include MDOC_ASSERT_ROOT.'/article.html.php';
+		$html = ob_get_contents();
+		ob_clean();
+		$target_file = $save_path.'/'.basename($article['file'], '.md').'.html';
+		$logger->info('save file', $target_file);
+		file_put_contents($target_file, $html);
+		if($article['children']){
+			build($article['children'], $logger);
+		}
 	}
-	ob_start();
-	include MDOC_ASSERT_ROOT.'/article.html.php';
-	$html = ob_get_contents();
-	ob_clean();
-	$target_file = $save_path.'/'.basename($article['file'], '.md').'.html';
-	$logger->info('save file', $target_file);
-	file_put_contents($target_file, $html);
 }
+
+build($article_list, $logger);

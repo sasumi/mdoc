@@ -13,8 +13,9 @@ use function mdoc\get_style_sheet;
 	<meta name="viewport"
 	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<style><?=get_style_sheet();?></style>
+	<link rel="stylesheet" href="assert/style.css">
 	<title><?=h($article['title']);?></title>
+	<script src="https://s.huapx.com/src/vendor/jquery/jquery-1.8.3.min.js"></script>
 </head>
 <body>
 	<section class="page">
@@ -66,9 +67,7 @@ use function mdoc\get_style_sheet;
 
 		</section>
 	</section>
-	<script>
-		// setTimeout("location.reload()", 5000);
-	</script>
+	<script src="assert/global.js"></script>
 </body>
 </html>
 <?php

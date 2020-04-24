@@ -53,12 +53,13 @@ footer .project-last-update {color:gray}
 .file-list>ul ul {margin-left:1em;}
 .file-list .title {padding:0.2em 0; display:inline-block; cursor:pointer;}
 .file-list .title:before {content:"\e73c"; font-family:var(--iconfont); margin-right:0.2em;}
-.file-list .active>.title {font-weight:bold;}
 .file-list [data-type="dir"]>.title {color:#cd8200;}
 .file-list [data-type="dir"]>.title:before {content:"\e600"}
 .file-list .toggle {position:absolute; margin:6px 0 0 -16px; cursor:pointer; font-family:var(--iconfont); font-size:11px; color:gray;}
 .file-list .toggle:hover {color:rgb(var(--color-rgb))}
 .file-list .toggle:before {content:"\e65e"; }
+.file-list .collapse>.toggle:before {content:">"}
+.file-list .collapse>ul {display:none;}
 
 .meta {margin:0 0 1em 0; padding:0; overflow:hidden; list-style:none; color:rgba(var(--color-rgb), 0.9)}
 .meta li {float:left; margin-right:2em}
@@ -97,7 +98,8 @@ article sup {font-size:8px}
 
 @media print {
 	body { background:none; }
+	.breadcrumbs,
 	aside { display:none; }
 	.article-wrap { height:auto; overflow:visible }
-	article { margin:0 auto; padding:0; box-shadow:none; }
+	article { margin:0 auto; padding:0; box-shadow:none; max-width:inherit; border-top:none;}
 }

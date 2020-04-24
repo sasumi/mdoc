@@ -16,13 +16,16 @@ define('SORT_NAME_DESC', 8);
 function get_articles_info($files, $root){
 	$summary_list = [];
 	foreach($files as $file){
+		$item = [];
 		if($file['type'] == TYPE_FILE){
-			$article = read_article($file['file']);
-			$summary_list[] = array_merge($file, $article);
+			$item = read_article($file['file']);
+		} else {
+			$item['title'] = $file['name'];
 		}
 		if($file['children']){
-			$summary_list = array_merge($summary_list, get_articles_info($file['children'], $root));
+			$item['children'] = get_articles_info($file['children'], $root);
 		}
+		$summary_list[] = array_merge($file, $item);
 	}
 	return $summary_list;
 }
@@ -49,8 +52,8 @@ function read_article($file){
 	$title = trim($title) ?: basename($file, '.md');
 	return [
 		'title'       => $title,
-		'raw'         => $raw,
-		'html'        => $pd->text($raw),
+//		'raw'         => $raw,
+//		'html'        => $pd->text($raw),
 	];
 }
 
@@ -81,7 +84,6 @@ function first_file($files){
 
 function build_file_nav($article_list, $current_article){
 	$html = '<ul>';
-	dump($article_list, 1);
 	foreach($article_list as $article){
 		$is_dir = $article['type'] === TYPE_DIR;
 		$class = $article['id'] == $current_article['id'] ? 'active' : '';
