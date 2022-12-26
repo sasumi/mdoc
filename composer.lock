@@ -1,0 +1,93 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "9eb658f77d0bca48727b34f205040f53",
+    "packages": [
+        {
+            "name": "lfphp/func",
+            "version": "1.1.27",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sasumi/Func.git",
+                "reference": "70a1e44c1026bc0a4a1f236469ee2aba94c830f2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sasumi/Func/zipball/70a1e44c1026bc0a4a1f236469ee2aba94c830f2",
+                "reference": "70a1e44c1026bc0a4a1f236469ee2aba94c830f2",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "ext-pdo": "*",
+                "ext-ssh2": "*",
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "8.5.8"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/array.php",
+                    "src/color.php",
+                    "src/cron.php",
+                    "src/csp.php",
+                    "src/curl.php",
+                    "src/db.php",
+                    "src/env.php",
+                    "src/file.php",
+                    "src/font.php",
+                    "src/html.php",
+                    "src/http.php",
+                    "src/session.php",
+                    "src/sheet.php",
+                    "src/string.php",
+                    "src/time.php",
+                    "src/util.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Sasumi.H",
+                    "email": "cnsasumi@outlook.com",
+                    "homepage": "http://blog.yikepi.com/"
+                }
+            ],
+            "description": "A lite function pack for PHP.",
+            "homepage": "http://blog.yikepi.com/",
+            "keywords": [
+                "function"
+            ],
+            "support": {
+                "issues": "https://github.com/sasumi/Func/issues",
+                "source": "https://github.com/sasumi/Func/tree/1.1.27"
+            },
+            "time": "2022-05-10T10:15:27+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
+}
