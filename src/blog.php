@@ -1,8 +1,6 @@
 <?php
 namespace Lfphp\Mdoc;
 
-use function LFPhp\Func\encodeURIByCharacter;
-
 function setup_mdoc($blog_config = []){
 	blog_config($blog_config);
 	if($blog_config['use_default_template']){
@@ -51,11 +49,17 @@ function get_blog_info(){
 
 function show_pagination($current_page, $total_page, $path = ''){
 	$html = '<div class="pagination">';
-	$html .= $current_page > 1 ? '<a class="prev" href="?path='.encodeURIByCharacter($path).'&page='.($current_page - 1).'">上一页</a>' : '<span class="prev">上一页</span>';
+	$html .= $current_page > 1 ? '<a class="prev" href="?'.http_build_query([
+			'path' => $path,
+			'page' => ($current_page - 1),
+		]).'">上一页</a>' : '<span class="prev">上一页</span>';
 
 	$html .= '<span class="info">'.$current_page.'/'.$total_page.'</span>';
 
-	$html .= $current_page < $total_page ? '<a class="next" href="?path='.encodeURIByCharacter($path).'&page='.($current_page + 1).'">下一页</a>' : '<span class="next">下一页</span>';
+	$html .= $current_page < $total_page ? '<a class="next" href="?'.http_build_query([
+			'path' => $path,
+			'page' => ($current_page + 1),
+		]).'">下一页</a>' : '<span class="next">下一页</span>';
 	$html .= '</div>';
 	return $html;
 }

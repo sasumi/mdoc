@@ -1,19 +1,15 @@
 <?php
 namespace Lfphp\Mdoc;
 
-use function LFPhp\Func\glob_recursive;
-use function LFPhp\Func\html_abstract;
-
-function get_articles($folder = null, $page_start = 0, $page_size = 10){
+function get_articles($folder = null, $page_start = 1, $page_size = 10){
 	$pattern = file_path($folder)."/*.md";
 	$files = glob_recursive($pattern);
-	$files = array_slice($files, $page_start, $page_size);
+	$files = array_slice($files, $page_start - 1, $page_size);
 	$articles = [];
-	$root = realpath(file_path()).DIRECTORY_SEPARATOR;
 	$total = get_count(file_path().($folder ? "/$folder" : ''));
 	foreach($files as $file){
 		$f = realpath($file);
-		$id = str_replace($root, '', $f);
+		$id = get_folder_id($f);
 		$base_info = get_article_base_info($id);
 		$articles[] = [
 			'id'            => $base_info['id'],
@@ -37,13 +33,14 @@ function get_folders_recursive($root = ''){
 	$tmp = glob(file_path($root).'/*', GLOB_ONLYDIR);
 	$folders = [];
 	foreach($tmp as $item){
+		$id = get_folder_id($item);
 		$c = [
-			'id'    => get_folder_id($item),
+			'id'    => $id,
 			'title' => basename($item),
-			'count' => get_count($item),
+			'count' => get_count($id),
 		];
 		if(is_dir($item)){
-			$c['children'] = get_folders_recursive($item);
+			$c['children'] = get_folders_recursive(get_folder_id($item));
 		}
 		$folders[] = $c;
 	}
@@ -51,7 +48,8 @@ function get_folders_recursive($root = ''){
 }
 
 function get_count($folder = ''){
-	$tmp = glob_recursive(file_path($folder).'/*.md');
+	$p = file_path($folder);
+	$tmp = glob_recursive($p.'/*.md');
 	return count($tmp);
 }
 
@@ -80,3 +78,4 @@ function get_article_detail($id, $with_detail = true){
 function get_article_base_info($id){
 	return get_article_detail($id, false);
 }
+

@@ -3,7 +3,8 @@
 	"autoload": {
 		"files": [
 			"./src/article.php",
-			"./src/blog.php"
+			"./src/blog.php",
+			"./src/func.php"
 		],
 		"psr-4": {
 			"Lfphp\\Mdoc\\": "src/"
@@ -14,8 +15,5 @@
 			"name": "sasumi",
 			"email": "cnsasumi@gmail.com"
 		}
-	],
-	"require": {
-		"lfphp/func": "^1.1"
-	}
+	]
 }
