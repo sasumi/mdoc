@@ -3,9 +3,7 @@
 	"autoload": {
 		"files": [
 			"./src/article.php",
-			"./src/blog.php",
-			"./src/define.inc.php",
-			"./src/function.php"
+			"./src/blog.php"
 		],
 		"psr-4": {
 			"Lfphp\\Mdoc\\": "src/"

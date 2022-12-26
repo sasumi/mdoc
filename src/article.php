@@ -1,45 +1,46 @@
 <?php
 namespace Lfphp\Mdoc;
 
-use function LFPhp\Func\dump;
 use function LFPhp\Func\glob_recursive;
 use function LFPhp\Func\html_abstract;
 
 function get_articles($folder = null, $page_start = 0, $page_size = 10){
-	$pattern = MDOC_ROOT.($folder ? "/$folder" : '')."/*.md";
+	$pattern = file_path($folder)."/*.md";
 	$files = glob_recursive($pattern);
 	$files = array_slice($files, $page_start, $page_size);
 	$articles = [];
-	$root = realpath(MDOC_ROOT).DIRECTORY_SEPARATOR;
+	$root = realpath(file_path()).DIRECTORY_SEPARATOR;
+	$total = get_count(file_path().($folder ? "/$folder" : ''));
 	foreach($files as $file){
 		$f = realpath($file);
 		$id = str_replace($root, '', $f);
 		$base_info = get_article_base_info($id);
 		$articles[] = [
-			'id'       => $base_info['id'],
-			'title'    => $base_info['title'],
-			'abstract' => $base_info['abstract'],
+			'id'            => $base_info['id'],
+			'title'         => $base_info['title'],
+			'abstract'      => $base_info['abstract'],
 			'category_path' => get_path($id),
 		];
 	}
-	return $articles;
+	return [$articles, $total];
 }
 
-function get_path($id){
-	$id = str_replace("\\", '/', $id);
-	if(strpos("/", $id) === false){
+function get_path($doc_id){
+	$doc_id = str_replace("\\", '/', $doc_id);
+	if(strpos($doc_id, "/") === false){
 		return "";
 	}
-	return preg_replace("/\/.*$/", '', $id);
+	return preg_replace("/(.*?)\/[^\/]+$/", '$1', $doc_id);
 }
 
-function get_folders_recursive($root = MDOC_ROOT){
-	$tmp = glob($root.'/*', GLOB_ONLYDIR);
+function get_folders_recursive($root = ''){
+	$tmp = glob(file_path($root).'/*', GLOB_ONLYDIR);
 	$folders = [];
 	foreach($tmp as $item){
 		$c = [
+			'id'    => get_folder_id($item),
 			'title' => basename($item),
-			'id'    => get_id($item),
+			'count' => get_count($item),
 		];
 		if(is_dir($item)){
 			$c['children'] = get_folders_recursive($item);
@@ -49,32 +50,33 @@ function get_folders_recursive($root = MDOC_ROOT){
 	return $folders;
 }
 
-function get_id($fold){
-	return str_replace(realpath(MDOC_ROOT), '', realpath($fold));
+function get_count($folder = ''){
+	$tmp = glob_recursive(file_path($folder).'/*.md');
+	return count($tmp);
+}
+
+function get_folder_id($full_folder_path){
+	$str = str_replace(realpath(file_path()), '', realpath($full_folder_path));
+	$str = str_replace("\\", "/", $str);
+	return trim($str, "/");
 }
 
 function get_article_detail($id, $with_detail = true){
-	$file = MDOC_ROOT."/$id";
+	$file = file_path($id);
 	$raw = file_get_contents($file);
 	$pd = new Parsedown();
 	$stu = $pd->parse($raw);
 	preg_match('/<h1>(.*?)<\/h1>/', $stu, $matches);
 	$ctn = preg_replace('/<h1>.*<\/h1>/im', '', $stu);
 	return [
-		'id'       => $id,
-		'title'    => trim($matches[1]),
-		'abstract' => html_abstract($ctn),
-		'content'  => $with_detail ? $ctn : '',
+		'id'            => $id,
+		'title'         => trim($matches[1]),
+		'abstract'      => html_abstract($ctn),
+		'content'       => $with_detail ? $ctn : '',
+		'category_path' => get_path($id),
 	];
 }
 
 function get_article_base_info($id){
 	return get_article_detail($id, false);
-}
-
-function h_md_raw($text){
-	$html = htmlspecialchars($text);
-	$html = str_replace("\r", '', $html);
-	$html = str_replace(array(' ', "\n", "\t"), array('&nbsp;&nbsp;', '<br/>', '&nbsp;&nbsp;&nbsp;&nbsp;'), $html);
-	return $html;
 }

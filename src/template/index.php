@@ -1,15 +1,18 @@
 <?php
 
-use function LFPhp\Func\encodeURI;
+use function LFPhp\Func\encodeURIByCharacter;
 use function LFPhp\Func\h;
 use function LFPhp\Func\ha;
 use function Lfphp\Mdoc\get_article_detail;
 use function Lfphp\Mdoc\get_articles;
-use function Lfphp\Mdoc\get_config;
+use function Lfphp\Mdoc\get_blog_info;
+use function Lfphp\Mdoc\get_count;
 use function Lfphp\Mdoc\get_folders_recursive;
+use function Lfphp\Mdoc\show_pagination;
 
-$blog_config = get_config();
+$blog_config = get_blog_info();
 $current_article = $_GET['id'] ? get_article_detail($_GET['id']) : null;
+$current_path = $_GET['path'] ?: null;
 ?>
 <!doctype html>
 <html lang="en">
@@ -18,13 +21,17 @@ $current_article = $_GET['id'] ? get_article_detail($_GET['id']) : null;
 	<meta name="viewport"
 	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link rel="stylesheet" href="asset/style.css">
 	<title><?=$blog_config['title'];?></title>
+	<style>
+		<?=file_get_contents(__DIR__.'/common.css');?>
+		<?=file_get_contents(__DIR__.'/style.css');?>
+		<?=file_get_contents(__DIR__.'/article.css');?>
+	</style>
 </head>
 <body>
 	<header>
 		<div class="content-wrap clearfix">
-			<h1 class="logo"><a href="?"><?=$blog_config['title'];?></a></h1>
+			<div class="logo"><a href="?"><?=$blog_config['title'];?></a></div>
 			<ul class="main-nav">
 				<li>
 					<a href="?">Home</a>
@@ -38,28 +45,30 @@ $current_article = $_GET['id'] ? get_article_detail($_GET['id']) : null;
 	</header>
 	<section class="content content-wrap">
 		<aside>
-			<dl class="aside-mod">
-				<dt>Category</dt>
+			<dl class="aside-category-mod">
+				<dt>分类</dt>
 				<dd>
-					<ul class="categories">
-						<li>
-							<a href="?">All Categories</a>
+					<ul>
+						<li <?=!$current_path ? 'class="active"':'';?>>
+							<a href="?">所有分类</a>
+							<span class="cnt"><?=get_count();?></span>
 						</li>
 						<?php
 						$categories = get_folders_recursive();
-						function show_cats($cats){
+						function show_cats($cats, $current_path){
 							$html = '<ul>';
 							foreach($cats as $cat){
-								$html .= '<li><a href="?path='.ha($cat['id']).'">'.$cat['title'].'</a></li>';
+								$html .= '<li '.($current_path == $cat['id'] ? 'class="active"':'').'><a href="?path='.ha($cat['id']).'">'.$cat['title'].'</a></li>';
 							}
 							$html .= '</ul>';
 							return $html;
 						}
 						foreach($categories as $cat):?>
-						<li>
-							<a href="?path=<?=encodeURI($cat['id']);?>"><?=h($cat['title']);?></a>
+						<li <?=$current_path == $cat['id'] ? 'class="active"':'';?>>
+							<a href="?path=<?=encodeURIByCharacter($cat['id']);?>"><?=h($cat['title']);?></a>
+							<span class="cnt"><?=$cat['count'] ?: 0;?></span>
 							<?php if($cat['children']){
-								echo show_cats($cat['children']);
+								echo show_cats($cat['children'], $current_path);
 							}
 							?>
 						</li>
@@ -72,9 +81,11 @@ $current_article = $_GET['id'] ? get_article_detail($_GET['id']) : null;
 		<?php if($current_article):?>
 		<section class="article">
 			<article>
-				<h2><?=h($current_article['title']);?></h2>
+				<h1><?=h($current_article['title']);?></h1>
 				<ul class="metas">
-					<li>Category: <?=$current_article['category_path'] ?: 'Root';?></li>
+					<li><i class="iconfont icon-thumbnail"></i> 分类：
+						<?=$current_article['category_path'] ? '<a href="?path='.encodeURIByCharacter($current_article['category_path']).'">'.$current_article['category_path'].'</a>' : '-';?>
+					</li>
 				</ul>
 				<div class="ctn">
 					<?=$current_article['content'];?>
@@ -83,25 +94,31 @@ $current_article = $_GET['id'] ? get_article_detail($_GET['id']) : null;
 		</section>
 		<?php else:?>
 		<section class="articles">
-			<?php $articles = get_articles();
+			<?php
+			$page = $_GET['page'] ?: 1;
+			$page_size = 5;
+			list($articles, $total) = get_articles($current_path, $page, $page_size);
 			foreach($articles as $article):
 			?>
 			<article>
-				<h2>
+				<h1>
 					<a href="?id=<?=$article['id'];?>"><?=h($article['title'])?></a>
-				</h2>
+				</h1>
 				<p class="abs">
-					<?=$article['abstract'];?>
+					<a href="?id=<?=$article['id'];?>">
+						<?=$article['abstract'];?>
+					</a>
 				</p>
 				<ul class="metas">
-					<li>Category: <?=$article['category_path'] ?: 'Root';?></li>
+					<li><i class="iconfont icon-thumbnail"></i> 分类：<?=$article['category_path'] ? '<a href="?path='.encodeURIByCharacter($article['category_path']).'">'.$article['category_path'].'</a>' : '-';?></li>
 				</ul>
 			</article>
 			<?php endforeach;?>
+			<?=show_pagination($page, ceil($total/$page_size), $current_path);?>
 		</section>
 		<?php endif;?>
 	</section>
-	<?php $config = get_config();?>
+	<?php $config = get_blog_info();?>
 	<footer>
 		<div>
 			By <?=$config['author'];?> &lt;<?=$config['contact'];?>&gt;

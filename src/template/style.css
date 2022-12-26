@@ -1,0 +1,123 @@
+
+html{
+	color:var(--color);
+	background:var(--background-color);
+	font-size:var(--font-size);
+	font-family:var(--font-family);
+	line-height:var(--line-height);
+}
+
+*:focus{
+	outline:1px solid var(--link-color);
+	box-shadow:var(--focus-shadow);
+}
+
+header{
+	padding:1rem 0;
+	color:var(--color-inverted);
+	background-color:var(--background-color-inverted);
+}
+
+header a{
+	color:white;
+}
+
+header a:hover{
+	color: var(--link-hover-color);
+}
+
+a{
+	text-decoration:none;
+}
+
+.logo{
+	font-size:1.5rem;
+	float:left;
+}
+
+.logo a{
+	color:var(--color-inverted)
+}
+
+.main-nav{
+	margin:10px 0 0 3rem;
+	float:left;
+}
+
+.main-nav li{
+	float:left;
+}
+
+.main-nav li:after{
+	content:"|";
+	color:gray;
+	padding:0 1rem;
+}
+.main-nav li:last-child:after{
+	display:none;
+}
+
+.content-wrap{
+	max-width:1200px;
+	margin:0 auto;
+	display:block;
+}
+
+.content{
+	display:flex;
+}
+
+.content aside{flex:1;max-width:250px;margin-right: 1rem;margin-top:2rem;}
+.aside-category-mod{margin:10px 0;}
+.aside-category-mod dt{padding:0.5em;border-bottom:1px solid #cccccc;color: gray;text-shadow: 1px 1px 1px white;}
+.aside-category-mod dt:before {content:"\e618"; font-family:var(--iconfont); margin-right:0.25em;}
+.aside-category-mod dd{padding:0.5em;}
+.aside-category-mod ul{
+	padding-left:1rem
+}
+
+.aside-category-mod li {
+	padding:0.25em 0;
+}
+
+.aside-category-mod li.active>a {
+	font-weight:bold;
+}
+
+.aside-category-mod a {
+	display:block;
+}
+.aside-category-mod .cnt {
+	background-color:#ddd;
+	padding:0 0.25em;
+	float:right;
+	border-radius:3px;
+	margin-top: -1.5em;
+}
+
+.pagination {
+	text-align:center;
+}
+
+.pagination span {
+	color:gray;
+}
+.pagination a,
+.pagination span {
+	display:inline-block;
+	margin:0 1rem;
+}
+
+.pagination .prev:before,
+.pagination .next:after {content:"\e73b"; font-family:var(--iconfont); scale:0.8}
+.pagination .prev:before {transform: rotate(180deg);display: inline-block;}
+
+
+
+footer{
+	color:#bbbbbb;
+	text-align:center;
+	font-size:.8rem;
+	padding:1rem 0;
+	text-shadow:1px 1px 1px white;
+}
