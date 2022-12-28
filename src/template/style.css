@@ -112,12 +112,14 @@ a{
 .pagination .next:after {content:"\e73b"; font-family:var(--iconfont); scale:0.8}
 .pagination .prev:before {transform: rotate(180deg);display: inline-block;}
 
-
-
 footer{
-	color:#bbbbbb;
 	text-align:center;
 	font-size:.8rem;
 	padding:1rem 0;
+}
+
+footer .contact,
+footer .copyrights {
 	text-shadow:1px 1px 1px white;
+	color:#bbbbbb;
 }

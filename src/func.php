@@ -21,6 +21,10 @@ function glob_recursive($pattern, $flags = 0){
 	return $files;
 }
 
+function is_relative_link($url){
+	return strpos($url, 'https://') !== 0 || strpos($url, 'http://') !== 0 || strpos($url, '//') !== 0;
+}
+
 /**
  * 获取HTML摘要信息
  * @param string $html_content
@@ -30,7 +34,6 @@ function glob_recursive($pattern, $flags = 0){
 function html_abstract($html_content, $len = 200){
 	$str = str_replace(array("\n", "\r"), "", $html_content);
 	$str = preg_replace('/<br([^>]*)>/i', '$$NL', $str);
-	//todo convert <p> <div> to line break
 	$str = strip_tags($str);
 	$str = html_entity_decode($str, ENT_QUOTES);
 	$str = h($str, $len);
@@ -39,6 +42,22 @@ function html_abstract($html_content, $len = 200){
 	//移除头尾空白行
 	$str = preg_replace('/^(<br[^>]*>)*/i', '', $str);
 	return preg_replace('/(<br[^>]*>)*$/i', '', $str);
+}
+
+/**
+ * @return array [path, phar_file_name]
+ */
+function get_current_phar_file_name(){
+	$phar_protocol = 'phar://';
+	if(strpos(__FILE__, $phar_protocol) === false){
+		return [];
+	}
+	$f = substr(__FILE__, strlen($phar_protocol));
+	$f = str_replace('\\','/', $f);
+	if(preg_match("/(.*?)\/(.*\.phar)\//i", $f, $matches)){
+		return [$matches[1], $matches[2]];
+	}
+	return [];
 }
 
 /**

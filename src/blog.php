@@ -1,13 +1,6 @@
 <?php
 namespace Lfphp\Mdoc;
 
-function setup_mdoc($blog_config = []){
-	blog_config($blog_config);
-	if($blog_config['use_default_template']){
-		include __DIR__.'/template/index.php';
-	}
-}
-
 function blog_config(&$set_config = null){
 	static $blog_config = [
 		'root'                 => '',

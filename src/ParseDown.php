@@ -4,15 +4,14 @@ namespace Lfphp\Mdoc;
 class ParseDown {
 	const version = '1.8.0-beta-7';
 
-	function text($text){
+	public function text($text){
 		$Elements = $this->textElements($text);
 
 		# convert to markup
 		$markup = $this->elements($Elements);
 
 		# trim line breaks
-		$markup = trim($markup, "\n");
-		return $markup;
+		return trim($markup, "\n");
 	}
 
 	protected function textElements($text){
@@ -36,7 +35,7 @@ class ParseDown {
 	# Setters
 	#
 
-	function setBreaksEnabled($breaksEnabled){
+	public function setBreaksEnabled($breaksEnabled){
 		$this->breaksEnabled = $breaksEnabled;
 
 		return $this;
@@ -44,7 +43,7 @@ class ParseDown {
 
 	protected $breaksEnabled;
 
-	function setMarkupEscaped($markupEscaped){
+	public function setMarkupEscaped($markupEscaped){
 		$this->markupEscaped = $markupEscaped;
 
 		return $this;
@@ -52,7 +51,7 @@ class ParseDown {
 
 	protected $markupEscaped;
 
-	function setUrlsLinked($urlsLinked){
+	public function setUrlsLinked($urlsLinked){
 		$this->urlsLinked = $urlsLinked;
 
 		return $this;
@@ -60,7 +59,7 @@ class ParseDown {
 
 	protected $urlsLinked = true;
 
-	function setSafeMode($safeMode){
+	public function setSafeMode($safeMode){
 		$this->safeMode = (bool)$safeMode;
 
 		return $this;
@@ -68,7 +67,7 @@ class ParseDown {
 
 	protected $safeMode;
 
-	function setStrictMode($strictMode){
+	public function setStrictMode($strictMode){
 		$this->strictMode = (bool)$strictMode;
 
 		return $this;
@@ -93,10 +92,6 @@ class ParseDown {
 		'news:',
 		'steam:',
 	);
-
-	#
-	# Lines
-	#
 
 	protected $BlockTypes = array(
 		'#' => array('Header'),
@@ -123,8 +118,6 @@ class ParseDown {
 		'|' => array('Table'),
 		'~' => array('FencedCode'),
 	);
-
-	# ~
 
 	protected $unmarkedBlockTypes = array(
 		'Code',
@@ -158,11 +151,8 @@ class ParseDown {
 			}
 
 			$indent = strspn($line, ' ');
-
 			$text = $indent > 0 ? substr($line, $indent) : $line;
-
 			$Line = array('body' => $line, 'indent' => $indent, 'text' => $text);
-
 			if(isset($CurrentBlock['continuable'])){
 				$methodName = 'block'.$CurrentBlock['type'].'Continue';
 				$Block = $this->$methodName($Line, $CurrentBlock);
@@ -309,9 +299,6 @@ class ParseDown {
 		return $Block;
 	}
 
-	#
-	# Comment
-
 	protected function blockComment($Line){
 		if($this->markupEscaped or $this->safeMode){
 			return;
@@ -346,9 +333,6 @@ class ParseDown {
 
 		return $Block;
 	}
-
-	#
-	# Fenced Code
 
 	protected function blockFencedCode($Line){
 		$marker = $Line['text'][0];
@@ -387,8 +371,7 @@ class ParseDown {
 
 			$Element['attributes'] = array('class' => "language-$language");
 		}
-
-		$Block = array(
+		return array(
 			'char'         => $marker,
 			'openerLength' => $openerLength,
 			'element'      => array(
@@ -396,15 +379,12 @@ class ParseDown {
 				'element' => $Element,
 			),
 		);
-
-		return $Block;
 	}
 
 	protected function blockFencedCodeContinue($Line, $Block){
 		if(isset($Block['complete'])){
 			return;
 		}
-
 		if(isset($Block['interrupted'])){
 			$Block['element']['element']['text'] .= str_repeat("\n", $Block['interrupted']);
 
@@ -427,9 +407,6 @@ class ParseDown {
 	protected function blockFencedCodeComplete($Block){
 		return $Block;
 	}
-
-	#
-	# Header
 
 	protected function blockHeader($Line){
 		$level = strspn($Line['text'], '#');
@@ -886,7 +863,7 @@ class ParseDown {
 	}
 
 	#
-	# ~
+
 	#
 
 	protected function paragraph($Line){
@@ -930,12 +907,10 @@ class ParseDown {
 		'\\' => array('EscapeSequence'),
 	);
 
-	# ~
-
 	protected $inlineMarkerList = '!*_&[:<`~\\';
 
 	#
-	# ~
+
 	#
 
 	public function line($text, $nonNestables = array()){
@@ -1027,7 +1002,7 @@ class ParseDown {
 	}
 
 	#
-	# ~
+
 	#
 
 	protected function inlineText($text){
@@ -1317,8 +1292,6 @@ class ParseDown {
 		}
 	}
 
-	# ~
-
 	protected function unmarkedText($text){
 		$Inline = $this->inlineText($text);
 		return $this->element($Inline['element']);
@@ -1493,8 +1466,6 @@ class ParseDown {
 		return $markup;
 	}
 
-	# ~
-
 	protected function li($lines){
 		$Elements = $this->linesElements($lines);
 
@@ -1504,10 +1475,6 @@ class ParseDown {
 
 		return $Elements;
 	}
-
-	#
-	# AST Convenience
-	#
 
 	/**
 	 * Replace occurrences $regexp with $Elements in $text. Return an array of
@@ -1535,14 +1502,8 @@ class ParseDown {
 		return $newElements;
 	}
 
-	#
-	# Deprecated Methods
-	#
-
-	function parse($text){
-		$markup = $this->text($text);
-
-		return $markup;
+	public function parse($text){
+		return $this->text($text);
 	}
 
 	protected function sanitiseElement(array $Element){

@@ -22,9 +22,9 @@ $current_path = $_GET['path'] ?: null;
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title><?=$blog_config['title'];?></title>
 	<style>
-		<?=file_get_contents(__DIR__.'/common.css');?>
-		<?=file_get_contents(__DIR__.'/style.css');?>
-		<?=file_get_contents(__DIR__.'/article.css');?>
+		<?php include (__DIR__.'/common.css');?>
+		<?php include (__DIR__.'/style.css');?>
+		<?php include (__DIR__.'/article.css');?>
 	</style>
 </head>
 <body>
@@ -92,6 +92,9 @@ $current_path = $_GET['path'] ?: null;
 				</div>
 			</article>
 		</section>
+		<section class="toc">
+			<script><?php include __DIR__.'/toc.js';?></script>
+		</section>
 	<?php else: ?>
 		<section class="articles">
 			<?php
@@ -120,13 +123,18 @@ $current_path = $_GET['path'] ?: null;
 		</section>
 	<?php endif; ?>
 </section>
-<?php $config = get_blog_info(); ?>
+<?php $blog_info = get_blog_info(); ?>
 <footer>
-	<div>
-		By <?=$config['author'];?> &lt;<?=$config['contact'];?>&gt;
+	<?php $new_version = check_new_version();
+	if($new_version):
+	?>
+	<div class="upgrade">发现新版本：<?=$new_version['version'];?> （当前版本：<?=this_version();?>），<a href="<?=RELEASE_PATH.(release_file_name($new_version['version']));?>" target="_blank">立即更新</a></div>
+	<?php endif;?>
+	<div class="contact">
+		By <?=$blog_info['author'];?> &lt;<?=$blog_info['contact'];?>&gt;
 	</div>
-	<div>
-		<?=$config['copyrights'];?>
+	<div class="copyrights">
+		<?=$blog_info['copyrights'];?>
 	</div>
 </footer>
 </body>

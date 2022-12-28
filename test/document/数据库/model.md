@@ -244,4 +244,4 @@ MySQL字段类型转换规则：
 ## 不推荐类型规则
 	1. 声明timestamp类型，实际存储却为int类型
 
-[MySQL数据库规范](docs/DBDesign.md)
+[MySQL数据库规范](DBDesign.md)
