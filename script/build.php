@@ -1,4 +1,8 @@
 <?php
+namespace Lfphp\Mdoc;
+use FilesystemIterator;
+use Phar;
+
 include_once __DIR__.'/../src/bootstrap.php';
 
 $RELEASE_VERSION_FILE = 'newest.json';

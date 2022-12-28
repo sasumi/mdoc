@@ -153,7 +153,7 @@ $current_path = $_GET['path'] ?: null;
 		<?=$blog_info['contact'];?>&gt;
 	</div>
 	<?php endif;?>
-	
+
 	<?php if($blog_info['copyrights']):?>
 	<div class="copyrights">
 		<?=$blog_info['copyrights'];?>
