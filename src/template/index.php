@@ -1,13 +1,5 @@
 <?php
-
-use function Lfphp\Mdoc\get_article_detail;
-use function Lfphp\Mdoc\get_articles;
-use function Lfphp\Mdoc\get_blog_info;
-use function Lfphp\Mdoc\get_count;
-use function Lfphp\Mdoc\get_folders_recursive;
-use function Lfphp\Mdoc\h;
-use function Lfphp\Mdoc\ha;
-use function Lfphp\Mdoc\show_pagination;
+namespace Lfphp\Mdoc;
 
 $blog_config = get_blog_info();
 $current_article = $_GET['id'] ? get_article_detail($_GET['id']) : null;
@@ -30,13 +22,14 @@ $current_path = $_GET['path'] ?: null;
 <body>
 <header>
 	<div class="content-wrap clearfix">
+		<?php if($blog_config['title']):?>
 		<div class="logo"><a href="?"><?=$blog_config['title'];?></a></div>
+		<?php endif;?>
 		<ul class="main-nav">
 			<li>
 				<a href="?">Home</a>
 			</li>
 			<li>
-
 				<a href="?">Blogs</a>
 			</li>
 		</ul>
@@ -83,8 +76,13 @@ $current_path = $_GET['path'] ?: null;
 			<article>
 				<h1><?=h($current_article['title']);?></h1>
 				<ul class="metas">
-					<li><i class="iconfont icon-thumbnail"></i> 分类：
-						<?=$current_article['category_path'] ? '<a href="?'.http_build_query(['path' => $current_article['category_path']]).'">'.$current_article['category_path'].'</a>' : '-';?>
+					<li>
+						<?=$current_article['category_path'] ? '<a class="iconfont icon-thumbnail" href="?'.http_build_query(['path' => $current_article['category_path']]).'"> '.$current_article['category_path'].'</a>' : '-';?>
+					</li>
+					<li>
+						<span class="link iconfont icon-share" data-share-title="<?=ha($current_article['title'])?>" data-share-id="<?=$current_article['id'];?>">
+							分享
+						</span>
 					</li>
 				</ul>
 				<div class="ctn">
@@ -113,8 +111,13 @@ $current_path = $_GET['path'] ?: null;
 						</a>
 					</p>
 					<ul class="metas">
-						<li><i class="iconfont icon-thumbnail"></i>
-							分类：<?=$article['category_path'] ? '<a href="?'.http_build_query(['path' => $article['category_path']]).'">'.$article['category_path'].'</a>' : '-';?>
+						<li>
+							<?=$article['category_path'] ? '<a class="iconfont icon-thumbnail" href="?'.http_build_query(['path' => $article['category_path']]).'"> '.$article['category_path'].'</a>' : '-';?>
+						</li>
+						<li>
+						<span class="link iconfont icon-share" data-share-title="<?=ha($article['title'])?>" data-share-id="<?=$article['id'];?>">
+							分享
+						</span>
 						</li>
 					</ul>
 				</article>
@@ -122,6 +125,19 @@ $current_path = $_GET['path'] ?: null;
 			<?=show_pagination($page, ceil($total/$page_size), $current_path);?>
 		</section>
 	<?php endif; ?>
+	<script>
+		document.querySelectorAll('.icon-share').forEach(shareLink=>{
+			shareLink.addEventListener('click', e=>{
+				let url = location.protocol+'//'+location.host+location.pathname+'?id='+shareLink.getAttribute('data-share-id');
+				let text = shareLink.getAttribute('data-share-title')+"\n"+url;
+				navigator.clipboard.writeText(text).then(()=>{
+					alert('分享信息复制成功');
+				}).catch(err=>{
+					alert('复制失败');
+				});
+			})
+		})
+	</script>
 </section>
 <?php $blog_info = get_blog_info(); ?>
 <footer>
@@ -130,12 +146,19 @@ $current_path = $_GET['path'] ?: null;
 	?>
 	<div class="upgrade">发现新版本：<?=$new_version['version'];?> （当前版本：<?=this_version();?>），<a href="<?=RELEASE_PATH.(release_file_name($new_version['version']));?>" target="_blank">立即更新</a></div>
 	<?php endif;?>
+
+	<?php if($blog_info['author'] || $blog_info['contact']):?>
 	<div class="contact">
-		By <?=$blog_info['author'];?> &lt;<?=$blog_info['contact'];?>&gt;
+		<?=$blog_info['author'];?>
+		<?=$blog_info['contact'];?>&gt;
 	</div>
+	<?php endif;?>
+	
+	<?php if($blog_info['copyrights']):?>
 	<div class="copyrights">
 		<?=$blog_info['copyrights'];?>
 	</div>
+	<?php endif;?>
 </footer>
 </body>
 </html>

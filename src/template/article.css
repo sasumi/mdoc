@@ -4,17 +4,41 @@
 .content .article{
 	flex:1;
 	padding-top:2rem;
+	max-width:calc(100% - 250px)
 }
 .content .articles article h1{
 	font-size:1.5rem;
 }
 
 article .content,
-article .abs {
+article .abs{
 	font-size:16px;
 }
-article .abs a {
-	color:#444;
+article .abs a{
+	color:#444444;
+}
+
+article .metas{
+	color:gray;
+	overflow:hidden;
+	margin-bottom:1rem;
+}
+article .metas li{
+	float:left;
+}
+
+article .metas li:after {
+	content:"|";
+	padding:0 .5rem;
+	color:#ccc;
+}
+
+article .metas li:last-child:after {
+	display:none;
+}
+
+article .metas li:last-child{
+	margin-right:0;
 }
 
 article{
@@ -27,11 +51,19 @@ article{
 
 article pre{
 	font-family:var(--code-family);
+	font-size:var(--code-font-size);
 	padding:.5rem;
 	background-color:#eeeeee80;
 	margin:0.5rem 0;
 	font-style:italic;
 	color:green;
+	max-width:100%;
+	word-break:break-all;
+	overflow-x:hidden;
+}
+
+article pre:hover {
+	overflow:auto;
 }
 
 article table{
@@ -40,6 +72,10 @@ article table{
 
 article table thead{
 	background-color:#eeeeee;
+}
+
+article table thead th {
+	white-space:nowrap;
 }
 
 article th,
@@ -58,10 +94,6 @@ article h2,
 article h3,
 article h4,
 article h5,
-article h6 {
+article h6{
 	margin:1rem 0;
 }
-
-article .metas{color:gray;}
-article .metas li{margin-right:1rem;}
-article .metas li:last-child{margin-right:0;}

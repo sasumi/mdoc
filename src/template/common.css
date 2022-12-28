@@ -1,9 +1,9 @@
 @charset "UTF-8";
-@import "//at.alicdn.com/t/c/font_3840034_2ey0miutxd.css";
+@import "//at.alicdn.com/t/c/font_3840034_3bkktsyo5l3.css";
 :root{
 	--font-family:-apple-system,BlinkMacSystemFont,Segoe UI,system-ui,Roboto,PingFang SC,Hiragino Sans GB,Source Han Sans SC,Noto Sans CJK SC,Noto Sans SC,WenQuanYi Micro Hei,WenQuanYi Zen Hei,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
-	--code-family:consolas,
-	var(--font-family);
+	--code-family:consolas,	var(--font-family);
+	--code-font-size: 0.85rem;
 	--iconfont:iconfont,
 	var(--font-family);
 	--font-size:14px;
@@ -22,6 +22,11 @@
 	--color-no:red;
 	--button-radius:3px;
 	--panel-radius:5px;
+}
+
+html .iconfont {
+	font-family:var(--iconfont);
+	font-size:1rem;
 }
 
 *{

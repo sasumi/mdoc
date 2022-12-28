@@ -22,7 +22,7 @@ function glob_recursive($pattern, $flags = 0){
 }
 
 function is_relative_link($url){
-	return strpos($url, 'https://') !== 0 || strpos($url, 'http://') !== 0 || strpos($url, '//') !== 0;
+	return !(strpos($url, 'https://') === 0 || strpos($url, 'http://') === 0 || strpos($url, '//') === 0);
 }
 
 /**
@@ -53,7 +53,7 @@ function get_current_phar_file_name(){
 		return [];
 	}
 	$f = substr(__FILE__, strlen($phar_protocol));
-	$f = str_replace('\\','/', $f);
+	$f = str_replace('\\', '/', $f);
 	if(preg_match("/(.*?)\/(.*\.phar)\//i", $f, $matches)){
 		return [$matches[1], $matches[2]];
 	}
@@ -136,4 +136,31 @@ function substr_utf8($string, $length, $tail = '...', &$over_length = false){
 		}
 	}
 	return $str1;
+}
+
+function curl_get($url){
+	$user_agent = 'Mozilla/5.0 (Windows NT 6.1; rv:8.0) Gecko/20100101 Firefox/8.0';
+	$opt = [
+		CURLOPT_CUSTOMREQUEST  => "GET",        //set request type post or get
+		CURLOPT_POST           => false,        //set to GET
+		CURLOPT_USERAGENT      => $user_agent, //set user agent
+		CURLOPT_RETURNTRANSFER => true,     // return web page
+		CURLOPT_HEADER         => false,    // don't return headers
+		CURLOPT_FOLLOWLOCATION => true,     // follow redirects
+		CURLOPT_ENCODING       => "",       // handle all encodings
+		CURLOPT_AUTOREFERER    => true,     // set referer on redirect
+		CURLOPT_CONNECTTIMEOUT => 120,      // timeout on connect
+		CURLOPT_TIMEOUT        => 30,      // timeout on response
+		CURLOPT_MAXREDIRS      => 10,       // stop after 10 redirects
+	];
+	$ch = curl_init($url);
+	curl_setopt_array($ch, $opt);
+	$content = curl_exec($ch);
+	$err = curl_errno($ch);
+	$err_msg = curl_error($ch);
+	curl_close($ch);
+	if($err){
+		throw new \Exception('Update Fail:'.$err_msg."($err)");
+	}
+	return $content;
 }

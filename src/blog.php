@@ -28,7 +28,7 @@ function get_blog_info(){
 	static $config;
 	if(!$config){
 		$config_file = file_path(get_blog_config('config_file'));
-		$tmp = parse_ini_file($config_file);
+		$tmp = is_file($config_file) ? parse_ini_file($config_file) : [];
 		$config = [
 			'title'       => $tmp['title'],
 			'description' => $tmp['description'],

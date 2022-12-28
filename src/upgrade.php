@@ -1,12 +1,11 @@
 <?php
-
-use function Lfphp\Mdoc\get_current_phar_file_name;
+namespace Lfphp\Mdoc;
 
 const VER_REPO = 'http://localhost/mdoc/release/newest.json';
 const RELEASE_PATH = 'http://localhost/mdoc/release/';
 function release_file_name($version){
-	//	return "mdoc.$version.phar";
-	return "mdoc.phar";
+	return "mdoc.$version.phar";
+	//	return "mdoc.phar";
 }
 
 function check_new_version($check_interval = 1){
@@ -53,33 +52,4 @@ function get_remote_version(){
 		throw new Exception('Update response decode fail:'.$content);
 	}
 	return $ver;
-}
-
-function curl_get($url){
-	$user_agent = 'Mozilla/5.0 (Windows NT 6.1; rv:8.0) Gecko/20100101 Firefox/8.0';
-	$opt = [
-		CURLOPT_CUSTOMREQUEST  => "GET",        //set request type post or get
-		CURLOPT_POST           => false,        //set to GET
-		CURLOPT_USERAGENT      => $user_agent, //set user agent
-		CURLOPT_RETURNTRANSFER => true,     // return web page
-		CURLOPT_HEADER         => false,    // don't return headers
-		CURLOPT_FOLLOWLOCATION => true,     // follow redirects
-		CURLOPT_ENCODING       => "",       // handle all encodings
-		CURLOPT_AUTOREFERER    => true,     // set referer on redirect
-		CURLOPT_CONNECTTIMEOUT => 120,      // timeout on connect
-		CURLOPT_TIMEOUT        => 30,      // timeout on response
-		CURLOPT_MAXREDIRS      => 10,       // stop after 10 redirects
-	];
-	$ch = curl_init($url);
-	curl_setopt_array($ch, $opt);
-	$content = curl_exec($ch);
-	$err = curl_errno($ch);
-	$err_msg = curl_error($ch);
-	$header = curl_getinfo($ch);
-	curl_close($ch);
-
-	if($err){
-		throw new Exception('Update Fail:'.$err_msg."($err)");
-	}
-	return $content;
 }
