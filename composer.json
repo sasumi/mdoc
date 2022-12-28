@@ -4,7 +4,9 @@
 		"files": [
 			"./src/article.php",
 			"./src/blog.php",
-			"./src/func.php"
+			"./src/func.php",
+			"./src/ParseDown.php",
+			"./src/upgrade.php"
 		],
 		"psr-4": {
 			"Lfphp\\Mdoc\\": "src/"

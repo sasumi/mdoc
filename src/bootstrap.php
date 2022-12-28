@@ -1,10 +1,6 @@
 <?php
 namespace Lfphp\Mdoc;
-include_once __DIR__.'/article.php';
-include_once __DIR__.'/blog.php';
-include_once __DIR__.'/func.php';
-include_once __DIR__.'/ParseDown.php';
-include_once __DIR__.'/upgrade.php';
+include_once __DIR__.'/../vendor/autoload.php';
 
 function setup_mdoc($blog_config = []){
 	blog_config($blog_config);
