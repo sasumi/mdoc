@@ -4,7 +4,7 @@
 		"files": [
 			"./src/article.php",
 			"./src/blog.php",
-			"./src/func.php",
+			"./src/function.php",
 			"./src/ParseDown.php",
 			"./src/upgrade.php"
 		],

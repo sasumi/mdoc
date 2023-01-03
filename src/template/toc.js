@@ -24,3 +24,13 @@ const resolveTocListFromDom = (dom, levelMaps = ['h1', 'h2', 'h3', 'h4', 'h5', '
 	});
 	return tocList;
 }
+
+const LVS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+let coll = [];
+let con = document.getElementById('toc-con');
+Array.from(con.querySelectorAll(LVS.join(','))).forEach(hn=>{
+	let txt =
+	coll.push(`<li><a href="#${id}">${txt}</a></li>`);
+})
+
+

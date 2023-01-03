@@ -40,10 +40,11 @@ function get_blog_info(){
 	return $config;
 }
 
-function show_pagination($current_page, $total_page, $path = ''){
+function show_pagination($current_page, $total_page, $path = '', $current_sort_by = ''){
 	$html = '<div class="pagination">';
 	$html .= $current_page > 1 ? '<a class="prev" href="?'.http_build_query([
 			'path' => $path,
+			'sort' => $current_sort_by,
 			'page' => ($current_page - 1),
 		]).'">上一页</a>' : '<span class="prev">上一页</span>';
 
@@ -51,6 +52,7 @@ function show_pagination($current_page, $total_page, $path = ''){
 
 	$html .= $current_page < $total_page ? '<a class="next" href="?'.http_build_query([
 			'path' => $path,
+			'sort' => $current_sort_by,
 			'page' => ($current_page + 1),
 		]).'">下一页</a>' : '<span class="next">下一页</span>';
 	$html .= '</div>';

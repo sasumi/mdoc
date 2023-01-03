@@ -1,9 +1,9 @@
 @charset "UTF-8";
-@import "//at.alicdn.com/t/c/font_3840034_3bkktsyo5l3.css";
+@import "//at.alicdn.com/t/c/font_3840034_sj7xhhvp81.css";
 :root{
-	--font-family:-apple-system,BlinkMacSystemFont,Segoe UI,system-ui,Roboto,PingFang SC,Hiragino Sans GB,Source Han Sans SC,Noto Sans CJK SC,Noto Sans SC,WenQuanYi Micro Hei,WenQuanYi Zen Hei,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
-	--code-family:consolas,	var(--font-family);
-	--code-font-size: 0.85rem;
+	--font-family:-apple-system, BlinkMacSystemFont, Segoe UI, system-ui, Roboto, PingFang SC, Hiragino Sans GB, Source Han Sans SC, Noto Sans CJK SC, Noto Sans SC, WenQuanYi Micro Hei, WenQuanYi Zen Hei, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+	--code-family:consolas, var(--font-family);
+	--code-font-size:0.85rem;
 	--iconfont:iconfont,
 	var(--font-family);
 	--font-size:14px;
@@ -13,7 +13,7 @@
 	--color-inverted:#ffffff;
 	--background-color-inverted:var(--color);
 	--section-background-color:#ffffff;
-	--link-color:#333;
+	--link-color:#333333;
 	--link-hover-color:#3f8bfe;
 	--panel-shadow:1px 1px 10px #dddddd;
 	--element-height:2.5em;
@@ -24,7 +24,7 @@
 	--panel-radius:5px;
 }
 
-html .iconfont {
+html .iconfont{
 	font-family:var(--iconfont);
 	font-size:1rem;
 }
@@ -201,4 +201,70 @@ i.info:before{}
 	to{
 		transform:rotate(1turn);
 	}
+}
+
+dl.sort-menu{
+	display:inline-block;
+	position:relative;
+}
+
+dl.menu dt{
+	transition:all 0.1s linear;
+	padding:0.25em 1em;
+	margin-bottom:0.5em;
+	cursor:default;
+	color:gray;
+	display:inline-block;
+	border:1px solid #cccccc;
+	border-radius:var(--panel-radius);
+	background-color:var(--color-inverted);
+}
+
+dl.menu:hover dt{
+	color:var(--color);
+}
+
+dl.menu dt:before{
+	margin-right:0.5em;
+	font-size:1.2em;
+}
+
+dl.menu dd{
+	display:none;
+	text-align:left;
+	min-width:180px;
+	position:absolute;
+	right:0;
+	margin-top:-0.5em;
+	padding:0.5em 0;
+	box-shadow:1px 1px 30px #cccccc;
+	background-color:var(--color-inverted);
+	border-radius:var(--panel-radius);
+}
+dl.menu dd .sep{
+	border-bottom:1px solid #eeeeee;
+	width:calc(100% - 2em);
+	margin:0 1em;
+}
+dl.menu dd li:not(.sep){
+}
+
+dl.menu li.active a:before{
+	content:"\e624";
+	font-family:var(--iconfont);
+	position:absolute;
+	margin-left:-1.5em;
+}
+
+dl.menu li > a{
+	display:block;
+	padding:0.5em 1em 0.5em 2.5em;
+}
+
+dl.menu li > a:hover{
+	background-color:#eeeeee82;
+}
+
+dl.menu:hover dd{
+	display:block;
 }

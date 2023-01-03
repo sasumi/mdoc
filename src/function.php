@@ -60,6 +60,13 @@ function get_current_phar_file_name(){
 	return [];
 }
 
+function include_template($file, $params=[]){
+	if($params){
+		extract($params);
+	}
+	include __DIR__."/template/$file";
+}
+
 /**
  * 输出html变量
  * @param array|string $str

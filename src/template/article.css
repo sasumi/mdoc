@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+
+.articles .ops{
+	text-align:right;
+}
+
 .content .articles,
 .content .article{
 	flex:1;
@@ -8,6 +13,12 @@
 }
 .content .articles article h1{
 	font-size:1.5rem;
+}
+
+.article .metas{
+	margin-bottom:.5rem;
+	padding-bottom:.5rem;
+	border-bottom:1px solid #dddddd;
 }
 
 article .content,
@@ -21,19 +32,18 @@ article .abs a{
 article .metas{
 	color:gray;
 	overflow:hidden;
-	margin-bottom:1rem;
 }
 article .metas li{
 	float:left;
 }
 
-article .metas li:after {
+article .metas li:after{
 	content:"|";
 	padding:0 .5rem;
-	color:#ccc;
+	color:#cccccc;
 }
 
-article .metas li:last-child:after {
+article .metas li:last-child:after{
 	display:none;
 }
 
@@ -62,7 +72,7 @@ article pre{
 	overflow-x:hidden;
 }
 
-article pre:hover {
+article pre:hover{
 	overflow:auto;
 }
 
@@ -74,7 +84,7 @@ article table thead{
 	background-color:#eeeeee;
 }
 
-article table thead th {
+article table thead th{
 	white-space:nowrap;
 }
 
